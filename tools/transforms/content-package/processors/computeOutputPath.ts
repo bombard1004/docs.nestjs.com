@@ -7,12 +7,12 @@ import { SRC_PATH } from '../../config';
 export class ComputeOutputPathProcessor implements Processor {
   $runBefore = ['writeFilesProcessor'];
   $process(docs: Document[]) {
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       if (doc.docType === 'content' || doc.docType === 'who-uses') {
         const filePath = doc.fileInfo.projectRelativePath;
         const distPath = filePath.slice(
-          'content'.length + 1,
-          filePath.length - 3 // strip extension
+          'content-ko'.length + 1,
+          filePath.length - 3, // strip extension
         );
 
         const pathSegments = distPath.split('/');
@@ -23,7 +23,7 @@ export class ComputeOutputPathProcessor implements Processor {
           SRC_PATH,
           '/app/homepage/pages',
           distPath,
-          distFilename
+          distFilename,
         );
       }
     });
