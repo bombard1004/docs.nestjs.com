@@ -1,18 +1,18 @@
 ### Events
 
-[Event Emitter](https://www.npmjs.com/package/@nestjs/event-emitter) package (`@nestjs/event-emitter`) provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application. Events serve as a great way to decouple various aspects of your application, since a single event can have multiple listeners that do not depend on each other.
+[Event Emitter](https://www.npmjs.com/package/@nestjs/event-emitter) 패키지(`@nestjs/event-emitter`)는 다양한 옵저버 구현을 제공하여 애플리케이션에서 발생하는 여러 이벤트를 구독하고 수신할 수 있습니다. 이벤트는 단일 이벤트에 여러 개의 독립적인 리스너가 있을 수 있기 때문에 애플리케이션의 다양한 측면을 분리하는 데 유용합니다.
 
-`EventEmitterModule` internally uses the [eventemitter2](https://github.com/EventEmitter2/EventEmitter2) package.
+`EventEmitterModule`은 내부적으로 [eventemitter2](https://github.com/EventEmitter2/EventEmitter2) 패키지를 사용합니다.
 
 #### Getting started
 
-First install the required package:
+먼저 필요한 패키지를 설치합니다.
 
 ```shell
 $ npm i --save @nestjs/event-emitter
 ```
 
-Once the installation is complete, import the `EventEmitterModule` into the root `AppModule` and run the `forRoot()` static method as shown below:
+설치가 완료되면 `EventEmitterModule`을 루트 `AppModule`로 임포트하고 아래와 같이 `forRoot()` 스태틱 메서드를 실행합니다.
 
 ```typescript
 @@filename(app.module)
@@ -27,9 +27,9 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 export class AppModule {}
 ```
 
-The `.forRoot()` call initializes the event emitter and registers any declarative event listeners that exist within your app. Registration occurs when the `onApplicationBootstrap` lifecycle hook occurs, ensuring that all modules have loaded and declared any scheduled jobs.
+`.forRoot()` 호출은 이벤트 이미터를 초기화하고 앱 내에 선언되어 있는 모든 이벤트 리스너를 등록합니다. 등록은 `onApplicationBootstrap` 라이프사이클 후크가 발생할 때 이루어지므로 모든 모듈이 로드되고 스케줄 작업을 선언함을 보장합니다.
 
-To configure the underlying `EventEmitter` instance, pass the configuration object to the `.forRoot()` method, as follows:
+기본 `EventEmitter` 인스턴스를 구성하려면 설정 객체를 `.forRoot()` 메서드에 전달하면 됩니다.
 
 ```typescript
 EventEmitterModule.forRoot({
@@ -52,15 +52,15 @@ EventEmitterModule.forRoot({
 
 #### Dispatching Events
 
-To dispatch (i.e., fire) an event, first inject `EventEmitter2` using standard constructor injection:
+이벤트를 발신하려면 먼저 `EventEmitter2`를 표준 생성자 주입을 사용하여 주입합니다.
 
 ```typescript
 constructor(private eventEmitter: EventEmitter2) {}
 ```
 
-> info **Hint** Import the `EventEmitter2` from the `@nestjs/event-emitter` package.
+> info **힌트** `EventEmitter2`는 `@nestjs/event-emitter` 패키지에서 임포트합니다.
 
-Then use it in a class as follows:
+그런 다음 클래스에서 다음과 같이 사용합니다.
 
 ```typescript
 this.eventEmitter.emit(
@@ -74,7 +74,7 @@ this.eventEmitter.emit(
 
 #### Listening to Events
 
-To declare an event listener, decorate a method with the `@OnEvent()` decorator preceding the method definition containing the code to be executed, as follows:
+이벤트 리스너를 선언하려면 메서드 앞에 `@OnEvent()` 데코레이터를 추가하여 코드를 실행할 메서드를 데코레이팅합니다.
 
 ```typescript
 @OnEvent('order.created')
@@ -83,12 +83,11 @@ handleOrderCreatedEvent(payload: OrderCreatedEvent) {
 }
 ```
 
-> warning **Warning** Event subscribers cannot be request-scoped.
+> warning **경고** 이벤트 구독자는 요청 범위(request-scoped)가 될 수 없습니다.
 
-The first argument can be a `string` or `symbol` for a simple event emitter and a `string | symbol | Array<string | symbol>` in a case of a wildcard emitter.  
+첫 번째 인수는 단순 이벤트 이미터의 경우 `string` 또는 `symbol`이고 와일드카드 이미터의 경우 `string | symbol | Array<string | symbol>`입니다.
 
-The second argument (optional) is a listener options object as follows:
-
+두 번째 인수(선택 사항)는 리스너 옵션 객체이고 다음과 같습니다.
 
 ```typescript
 export type OnEventOptions = OnOptions & {
@@ -103,14 +102,14 @@ export type OnEventOptions = OnOptions & {
 
   /**
    * If "true", the onEvent callback will not throw an error while handling the event. Otherwise, if "false" it will throw an error.
-   * 
+   *
    * @default true
    */
   suppressErrors?: boolean;
 };
 ```
 
-> info **Hint** Read more about the `OnOptions` options object from [`eventemitter2`](https://github.com/EventEmitter2/EventEmitter2#emitteronevent-listener-options-objectboolean).
+> info **힌트** `OnOptions` 옵션 객체에 대한 자세한 내용은 [`eventemitter2`](https://github.com/EventEmitter2/EventEmitter2#emitteronevent-listener-options-objectboolean)를 참조하세요.
 
 ```typescript
 @OnEvent('order.created', { async: true })
@@ -119,7 +118,7 @@ handleOrderCreatedEvent(payload: OrderCreatedEvent) {
 }
 ```
 
-To use namespaces/wildcards, pass the `wildcard` option into the `EventEmitterModule#forRoot()` method. When namespaces/wildcards are enabled, events can either be strings (`foo.bar`) separated by a delimiter or arrays (`['foo', 'bar']`). The delimiter is also configurable as a configuration property (`delimiter`). With namespaces feature enabled, you can subscribe to events using a wildcard:
+네임스페이스/와일드카드를 사용하려면 `EventEmitterModule#forRoot()` 메서드에 `wildcard` 옵션을 전달합니다. 네임스페이스/와일드카드가 활성화되면 이벤트는 구분자로 구분된 문자열(`foo.bar`) 또는 배열(`['foo', 'bar']`)일 수 있습니다. 구분 기호도 옵션의 프로퍼티(`delimiter`)로 설정할 수 있습니다. 네임스페이스 기능을 사용하면 와일드카드를 사용하여 이벤트를 구독할 수 있습니다.
 
 ```typescript
 @OnEvent('order.*')
@@ -128,10 +127,9 @@ handleOrderEvents(payload: OrderCreatedEvent | OrderRemovedEvent | OrderUpdatedE
 }
 ```
 
-Note that such a wildcard only applies to one block. The argument `order.*` will match, for example, the events `order.created` and `order.shipped` but not `order.delayed.out_of_stock`. In order to listen to such events,
-use the `multilevel wildcard` pattern (i.e, `**`), described in the `EventEmitter2` [documentation](https://github.com/EventEmitter2/EventEmitter2#multi-level-wildcards).
+이러한 와일드카드는 한 블록에만 적용됩니다. 인수 `order.*`는 예를 들어 `order.created`와 `order.shipped` 이벤트와 일치하지만 `order.delayed.out_of_stock`과는 일치하지 않습니다. 이러한 이벤트를 수신하려면 `EventEmitter2` [문서](https://github.com/EventEmitter2/EventEmitter2#multi-level-wildcards)에 설명된 `multilevel wildcard` 패턴(즉, `**`)을 사용하세요.
 
-With this pattern, you can, for example, create an event listener that catches all events.
+이 패턴을 사용하면 모든 이벤트를 캡처하는 이벤트 리스너를 만들 수 있습니다.
 
 ```typescript
 @OnEvent('**')
@@ -140,8 +138,8 @@ handleEverything(payload: any) {
 }
 ```
 
-> info **Hint** `EventEmitter2` class provides several useful methods for interacting with events, like `waitFor` and `onAny`. You can read more about them [here](https://github.com/EventEmitter2/EventEmitter2).
+> info **힌트** `EventEmitter2` 클래스에는 `waitFor`와 `onAny`와 같이 이벤트와 상호 작용하는 데 유용한 여러 메서드가 있습니다. 자세한 내용은 [여기](https://github.com/EventEmitter2/EventEmitter2)를 참조하세요.
 
 #### Example
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/30-event-emitter).
+예제는 [여기](https://github.com/nestjs/nest/tree/master/sample/30-event-emitter)에서 확인할 수 있습니다.
