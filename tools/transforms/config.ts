@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 
 export const PROJECT_ROOT = resolve(__dirname, '../../');
-export const CONTENTS_PATH = resolve(PROJECT_ROOT, 'content');
+export const CONTENTS_PATH = resolve(PROJECT_ROOT, 'content-ko');
 
 export const SRC_PATH = resolve(PROJECT_ROOT, 'src');
 export const OUTPUT_PATH = resolve(SRC_PATH, 'app/homepage/pages');
