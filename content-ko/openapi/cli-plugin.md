@@ -221,7 +221,7 @@ export interface PluginOptions {
   <tr>
     <td><code>esmCompatible</code></td>
     <td><code>false</code></td>
-    <td>true로 설정하면 ESM(<code>{ "type": "module" }</code>) 사용 시 발생하는 구문 오류를 해결합니다.</td>
+    <td>true로 설정하면 ESM (<code>&#123; "type": "module" &#125;</code>) 사용 시 발생하는 구문 오류를 해결합니다.</td>
   </tr>
 </table>
 

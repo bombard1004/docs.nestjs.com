@@ -112,22 +112,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Setup Environment (PR)
-        if: ${{ github.event_name == 'pull_request' }}
+        if: {{ '${{' }} github.event_name == 'pull_request' {{ '}}' }}
         shell: bash
         run: |
-          echo "COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >>${GITHUB_ENV}
+          echo "COMMIT_SHA={{ '${{' }} github.event.pull_request.head.sha {{ '}}' }}" >>\${GITHUB_ENV}
       - name: Setup Environment (Push)
-        if: ${{ github.event_name == 'push' }}
+        if: {{ '${{' }} github.event_name == 'push' {{ '}}' }}
         shell: bash
         run: |
-          echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
+          echo "COMMIT_SHA=\${GITHUB_SHA}" >> \${GITHUB_ENV}
       - name: Publish
         run: PUBLISH_GRAPH=true npm run start
         env:
           DEVTOOLS_API_KEY: CHANGE_THIS_TO_YOUR_API_KEY
-          REPOSITORY_NAME: ${{ github.event.repository.name }}
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-          TARGET_SHA: ${{ github.event.pull_request.base.sha }}
+          REPOSITORY_NAME: {{ '${{' }} github.event.repository.name {{ '}}' }}
+          BRANCH_NAME: {{ '${{' }} github.head_ref || github.ref_name {{ '}}' }}
+          TARGET_SHA: {{ '${{' }} github.event.pull_request.base.sha {{ '}}' }}
 ```
 
 이상적으로, `DEVTOOLS_API_KEY` 환경 변수는 GitHub Secrets에서 가져와야 합니다. 자세한 내용은 [여기](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)에서 읽어보세요.
