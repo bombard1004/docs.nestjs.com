@@ -110,11 +110,11 @@ bootstrap();
 
 #### 요청-응답 (Request-response)
 
-요청-응답 메시지 스타일은 다양한 외부 서비스 간에 메시지를 **교환**해야 할 때 유용합니다. 이 패러다임은 서비스가 실제로 메시지를 수신했음을 보장합니다 (승인 프로토콜을 수동으로 구현할 필요 없이). 하지만 요청-응답 방식이 항상 최적의 선택은 아닐 수 있습니다. 예를 들어, 로그 기반 영속성을 사용하는 [Kafka](https://docs.confluent.io/3.0.0/streams/) 또는 [NATS 스트리밍](https://github.com/nats-io/node-nats-streaming)과 같은 스트리밍 트랜스포터는 이벤트 메시징 패러다임에 더 부합하는 다른 종류의 문제를 해결하는 데 최적화되어 있습니다 ([이벤트 기반 메시징](https://docs.nestjs.com/microservices/basics#event-based)에서 더 자세한 내용을 확인하세요).
+요청-응답 메시지 스타일은 다양한 외부 서비스 간에 메시지를 **교환**해야 할 때 유용합니다. 이 패러다임은 서비스가 실제로 메시지를 수신했음을 보장합니다 (승인 프로토콜을 수동으로 구현할 필요 없이). 하지만 요청-응답 방식이 항상 최적의 선택은 아닐 수 있습니다. 예를 들어, 로그 기반 영속성을 사용하는 [Kafka](https://docs.confluent.io/3.0.0/streams/) 또는 [NATS 스트리밍](https://github.com/nats-io/node-nats-streaming)과 같은 스트리밍 트랜스포터는 이벤트 메시징 패러다임에 더 부합하는 다른 종류의 문제를 해결하는 데 최적화되어 있습니다 ([이벤트 기반 메시징](https://nestjs.dokidocs.dev/microservices/basics#event-based)에서 더 자세한 내용을 확인하세요).
 
 요청-응답 메시지 유형을 사용하려면 Nest는 두 개의 논리 채널을 생성합니다: 하나는 데이터 전송용이고 다른 하나는 들어오는 응답 대기용입니다. [NATS](https://nats.io/)와 같은 일부 기본 전송에서는 이러한 듀얼 채널 지원이 기본으로 제공됩니다. 다른 경우에는 Nest가 별도의 채널을 수동으로 생성하여 이를 보완합니다. 이는 효과적이지만 일부 오버헤드를 유발할 수 있습니다. 따라서 요청-응답 메시지 스타일이 필요하지 않은 경우, 이벤트 기반 방식을 사용하는 것을 고려해 볼 수 있습니다.
 
-요청-응답 패러다임을 기반으로 메시지 핸들러를 생성하려면 `@nestjs/microservices` 패키지에서 가져온 `@MessagePattern()` 데코레이터를 사용합니다. 이 데코레이터는 애플리케이션의 진입점 역할을 하는 [컨트롤러](https://docs.nestjs.com/controllers) 클래스 내에서만 사용해야 합니다. 프로바이더에서 사용하면 Nest 런타임에 의해 무시되므로 효과가 없습니다.
+요청-응답 패러다임을 기반으로 메시지 핸들러를 생성하려면 `@nestjs/microservices` 패키지에서 가져온 `@MessagePattern()` 데코레이터를 사용합니다. 이 데코레이터는 애플리케이션의 진입점 역할을 하는 [컨트롤러](https://nestjs.dokidocs.dev/controllers) 클래스 내에서만 사용해야 합니다. 프로바이더에서 사용하면 Nest 런타임에 의해 무시되므로 효과가 없습니다.
 
 ```typescript
 @@filename(math.controller)
@@ -234,7 +234,7 @@ getDate(data, context) {
 
 한 가지 접근 방식은 정적 `register()` 메서드를 노출하는 `ClientsModule`을 가져오는 것입니다. 이 메서드는 마이크로서비스 트랜스포터를 나타내는 객체 배열을 받습니다. 각 객체에는 필수적으로 `name` 속성이 포함되어야 하며, 선택적으로 `transport` 속성(`Transport.TCP`가 기본값)과 선택적 `options` 속성도 포함될 수 있습니다.
 
-`name` 속성은 필요한 곳에 `ClientProxy` 인스턴스를 주입하는 데 사용할 수 있는 **주입 토큰(injection token)** 역할을 합니다. 이 `name` 속성의 값은 [여기](https://docs.nestjs.com/fundamentals/custom-providers#non-class-based-provider-tokens)에 설명된 대로 임의의 문자열 또는 JavaScript 심볼이 될 수 있습니다.
+`name` 속성은 필요한 곳에 `ClientProxy` 인스턴스를 주입하는 데 사용할 수 있는 **주입 토큰(injection token)** 역할을 합니다. 이 `name` 속성의 값은 [여기](https://nestjs.dokidocs.dev/fundamentals/custom-providers#non-class-based-provider-tokens)에 설명된 대로 임의의 문자열 또는 JavaScript 심볼이 될 수 있습니다.
 
 `options` 속성은 이전에 `createMicroservice()` 메서드에서 본 것과 동일한 속성을 포함하는 객체입니다.
 

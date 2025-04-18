@@ -6,7 +6,7 @@
 
 > info **힌트** **[Angular](https://angular.dev/)** 프레임워크에 익숙하다면 이전에 "[게으른 로딩 모듈](https://angular.dev/guide/ngmodules/lazy-loading#lazy-loading-basics)"이라는 용어를 보셨을 수 있습니다. Nest에서는 이 기술이 **기능적으로 다릅니다**. 따라서 이것을 비슷한 명명 규칙을 공유하는 완전히 다른 기능이라고 생각하십시오.
 
-> warning **경고** 게으르게 로드된 모듈과 서비스에서는 [라이프사이클 훅 메서드](https://docs.nestjs.com/fundamentals/lifecycle-events)가 호출되지 않는다는 점에 유의하십시오.
+> warning **경고** 게으르게 로드된 모듈과 서비스에서는 [라이프사이클 훅 메서드](https://nestjs.dokidocs.dev/fundamentals/lifecycle-events)가 호출되지 않는다는 점에 유의하십시오.
 
 #### 시작하기
 

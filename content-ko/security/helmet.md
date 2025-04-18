@@ -20,7 +20,7 @@ import helmet from 'helmet';
 app.use(helmet());
 ```
 
-> warning **경고** `helmet`, `@apollo/server` (4.x), 그리고 [Apollo Sandbox](https://docs.nestjs.com/graphql/quick-start#apollo-sandbox)를 함께 사용할 때, Apollo Sandbox에서 [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) 문제가 발생할 수 있습니다. 이 문제를 해결하려면 아래와 같이 CSP를 구성하세요:
+> warning **경고** `helmet`, `@apollo/server` (4.x), 그리고 [Apollo Sandbox](https://nestjs.dokidocs.dev/graphql/quick-start#apollo-sandbox)를 함께 사용할 때, Apollo Sandbox에서 [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) 문제가 발생할 수 있습니다. 이 문제를 해결하려면 아래와 같이 CSP를 구성하세요:
 >
 > ```typescript
 > app.use(helmet({

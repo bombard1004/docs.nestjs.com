@@ -49,7 +49,7 @@ export class CatsService {
 }
 ```
 
-> warning **경고** `get()` 메서드로는 스코프 제공자(transient 또는 request-scoped)를 검색할 수 없습니다. 대신 <a href="https://docs.nestjs.com/fundamentals/module-ref#resolving-scoped-providers">아래</a>에 설명된 기법을 사용하십시오. 스코프 제어 방법은 [여기](/fundamentals/injection-scopes)에서 알아보세요.
+> warning **경고** `get()` 메서드로는 스코프 제공자(transient 또는 request-scoped)를 검색할 수 없습니다. 대신 <a href="https://nestjs.dokidocs.dev/fundamentals/module-ref#resolving-scoped-providers">아래</a>에 설명된 기법을 사용하십시오. 스코프 제어 방법은 [여기](/fundamentals/injection-scopes)에서 알아보세요.
 
 전역 컨텍스트에서 제공자를 검색하려면 (예를 들어, 다른 모듈에서 주입된 경우) `get()`의 두 번째 인수로 `{{ '{' }} strict: false {{ '}' }}` 옵션을 전달합니다.
 
@@ -191,7 +191,7 @@ export class CatsService {
 }
 ```
 
-> info **힌트** 요청 제공자에 대한 자세한 내용은 [여기](https://docs.nestjs.com/fundamentals/injection-scopes#request-provider)에서 알아보세요.
+> info **힌트** 요청 제공자에 대한 자세한 내용은 [여기](https://nestjs.dokidocs.dev/fundamentals/injection-scopes#request-provider)에서 알아보세요.
 
 이제 `ContextIdFactory` 클래스의 `getByRequest()` 메서드를 사용하여 요청 객체를 기반으로 컨텍스트 ID를 생성하고 이를 `resolve()` 호출에 전달합니다.
 

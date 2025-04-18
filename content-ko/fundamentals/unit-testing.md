@@ -325,7 +325,7 @@ Supertest의 `request()` 함수를 사용하여 HTTP 테스트를 시뮬레이�
 
 이 예제에서는 `CatsService`의 대체(테스트 더블) 구현도 제공합니다. 이 구현은 단순히 테스트할 수 있는 하드코딩된 값을 반환합니다. 이러한 대체 구현을 제공하려면 `overrideProvider()`를 사용합니다. 마찬가지로 Nest는 `overrideModule()`, `overrideGuard()`, `overrideInterceptor()`, `overrideFilter()`, `overridePipe()` 메서드를 사용하여 모듈, 가드, 인터셉터, 필터 및 파이프를 오버라이드하는 메서드를 제공합니다.
 
-각 오버라이드 메서드(`overrideModule()` 제외)는 [커스텀 프로바이더](https://docs.nestjs.com/fundamentals/custom-providers)에 설명된 3가지 메서드를 미러링하는 객체를 반환합니다.
+각 오버라이드 메서드(`overrideModule()` 제외)는 [커스텀 프로바이더](https://nestjs.dokidocs.dev/fundamentals/custom-providers)에 설명된 3가지 메서드를 미러링하는 객체를 반환합니다.
 
 - `useClass`: 객체(프로바이더, 가드 등)를 오버라이드하기 위해 인스턴스화될 클래스를 제공합니다.
 - `useValue`: 객체를 오버라이드할 인스턴스를 제공합니다.
@@ -439,7 +439,7 @@ const moduleRef = await Test.createTestingModule({
 
 [요청 범위](/fundamentals/injection-scopes) 프로바이더는 들어오는 **각 요청**에 대해 고유하게 생성됩니다. 인스턴스는 요청 처리가 완료된 후 가비지 수집됩니다. 이는 테스트된 요청에 대해 특별히 생성된 의존성 주입 서브트리에 접근할 수 없기 때문에 문제를 야기합니다.
 
-우리는 (위 섹션을 기반으로) `resolve()` 메서드를 사용하여 동적으로 인스턴스화된 클래스를 검색할 수 있다는 것을 압니다. 또한 [여기](https://docs.nestjs.com/fundamentals/module-ref#resolving-scoped-providers)에 설명된 대로, DI 컨테이너 서브트리의 수명주기를 제어하기 위해 고유한 컨텍스트 식별자를 전달할 수 있다는 것을 압니다. 테스트 컨텍스트에서 이를 어떻게 활용할까요?
+우리는 (위 섹션을 기반으로) `resolve()` 메서드를 사용하여 동적으로 인스턴스화된 클래스를 검색할 수 있다는 것을 압니다. 또한 [여기](https://nestjs.dokidocs.dev/fundamentals/module-ref#resolving-scoped-providers)에 설명된 대로, DI 컨테이너 서브트리의 수명주기를 제어하기 위해 고유한 컨텍스트 식별자를 전달할 수 있다는 것을 압니다. 테스트 컨텍스트에서 이를 어떻게 활용할까요?
 
 전략은 컨텍스트 식별자를 미리 생성하고 Nest가 이 특정 ID를 사용하여 들어오는 모든 요청에 대해 서브트리를 생성하도록 강제하는 것입니다. 이런 방식으로 테스트된 요청에 대해 생성된 인스턴스를 검색할 수 있습니다.
 

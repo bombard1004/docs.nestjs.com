@@ -116,4 +116,4 @@ export class AppModule {}
 
 요컨대, 모노레포와 라이브러리 기능의 조합은 라이브러리 모듈을 애플리케이션에 포함시키는 것을 쉽고 직관적으로 만들었습니다.
 
-이 동일한 메커니즘은 라이브러리를 구성하는 애플리케이션을 빌드하고 배포할 수 있게 합니다. `MyLibraryModule`을 가져온 후 `nest build`를 실행하면 모든 모듈 해결이 자동으로 처리되고, 배포를 위해 앱을 모든 라이브러리 종속성과 함께 번들링합니다. 모노레포의 기본 컴파일러는 **webpack**이므로, 결과 배포 파일은 변환된 모든 JavaScript 파일을 단일 파일로 묶은 단일 파일입니다. <a href="https://docs.nestjs.com/cli/monorepo#global-compiler-options">여기</a>에서 설명된 대로 `tsc`로 전환할 수도 있습니다.
+이 동일한 메커니즘은 라이브러리를 구성하는 애플리케이션을 빌드하고 배포할 수 있게 합니다. `MyLibraryModule`을 가져온 후 `nest build`를 실행하면 모든 모듈 해결이 자동으로 처리되고, 배포를 위해 앱을 모든 라이브러리 종속성과 함께 번들링합니다. 모노레포의 기본 컴파일러는 **webpack**이므로, 결과 배포 파일은 변환된 모든 JavaScript 파일을 단일 파일로 묶은 단일 파일입니다. <a href="https://nestjs.dokidocs.dev/cli/monorepo#global-compiler-options">여기</a>에서 설명된 대로 `tsc`로 전환할 수도 있습니다.

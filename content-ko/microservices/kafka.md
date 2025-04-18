@@ -116,9 +116,9 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 다른 마이크로서비스 트랜스포터와 비교하여 카프카에는 약간의 차이가 있습니다. `ClientProxy` 클래스 대신 `ClientKafkaProxy` 클래스를 사용합니다.
 
-다른 마이크로서비스 트랜스포터와 마찬가지로 `ClientKafkaProxy` 인스턴스를 생성하는 [여러 가지 옵션](https://docs.nestjs.com/microservices/basics#client)이 있습니다.
+다른 마이크로서비스 트랜스포터와 마찬가지로 `ClientKafkaProxy` 인스턴스를 생성하는 [여러 가지 옵션](https://nestjs.dokidocs.dev/microservices/basics#client)이 있습니다.
 
-인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`로 클라이언트 인스턴스를 생성하려면, 이를 임포트하고 `register()` 메서드를 사용하여 위에서 `createMicroservice()` 메서드에서 보여준 동일한 속성과 주입 토큰으로 사용할 `name` 속성을 가진 옵션 객체를 전달하면 됩니다. `ClientsModule`에 대해 더 자세히 알아보려면 [여기](https://docs.nestjs.com/microservices/basics#client)를 참조하세요.
+인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`로 클라이언트 인스턴스를 생성하려면, 이를 임포트하고 `register()` 메서드를 사용하여 위에서 `createMicroservice()` 메서드에서 보여준 동일한 속성과 주입 토큰으로 사용할 `name` 속성을 가진 옵션 객체를 전달하면 됩니다. `ClientsModule`에 대해 더 자세히 알아보려면 [여기](https://nestjs.dokidocs.dev/microservices/basics#client)를 참조하세요.
 
 ```typescript
 @Module({
@@ -143,7 +143,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 })
 ```
 
-클라이언트를 생성하는 다른 옵션(either `ClientProxyFactory` or `@Client()`)도 사용할 수 있습니다. [여기](https://docs.nestjs.com/microservices/basics#client)에서 해당 옵션에 대해 읽어볼 수 있습니다.
+클라이언트를 생성하는 다른 옵션(either `ClientProxyFactory` or `@Client()`)도 사용할 수 있습니다. [여기](https://nestjs.dokidocs.dev/microservices/basics#client)에서 해당 옵션에 대해 읽어볼 수 있습니다.
 
 `@Client()` 데코레이터를 다음과 같이 사용합니다.
 

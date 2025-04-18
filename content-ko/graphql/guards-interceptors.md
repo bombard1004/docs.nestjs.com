@@ -28,7 +28,7 @@ async upvotePost(@Args('postId') postId: number) {
 
 #### 실행 컨텍스트
 
-GraphQL은 수신되는 요청에서 다른 유형의 데이터를 받기 때문에 가드와 인터셉터가 받는 [실행 컨텍스트](https://docs.nestjs.com/fundamentals/execution-context)는 REST와 비교하여 GraphQL에서 다소 다릅니다. GraphQL 리졸버는 `root`, `args`, `context`, `info`라는 별개의 인자 집합을 가집니다. 따라서 가드와 인터셉터는 일반 `ExecutionContext`를 `GqlExecutionContext`로 변환해야 합니다. 이는 간단합니다.
+GraphQL은 수신되는 요청에서 다른 유형의 데이터를 받기 때문에 가드와 인터셉터가 받는 [실행 컨텍스트](https://nestjs.dokidocs.dev/fundamentals/execution-context)는 REST와 비교하여 GraphQL에서 다소 다릅니다. GraphQL 리졸버는 `root`, `args`, `context`, `info`라는 별개의 인자 집합을 가집니다. 따라서 가드와 인터셉터는 일반 `ExecutionContext`를 `GqlExecutionContext`로 변환해야 합니다. 이는 간단합니다.
 
 ```typescript
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';

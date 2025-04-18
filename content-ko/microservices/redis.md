@@ -68,9 +68,9 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 #### 클라이언트
 
-다른 마이크로서비스 트랜스포터와 마찬가지로 Redis `ClientProxy` 인스턴스를 생성하는 <a href="https://docs.nestjs.com/microservices/basics#client">몇 가지 옵션</a>이 있습니다.
+다른 마이크로서비스 트랜스포터와 마찬가지로 Redis `ClientProxy` 인스턴스를 생성하는 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">몇 가지 옵션</a>이 있습니다.
 
-인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`을 사용하여 클라이언트 인스턴스를 생성하려면 이를 임포트하고 `register()` 메서드를 사용하여 `createMicroservice()` 메서드에서 위에 표시된 것과 동일한 속성과 인젝션 토큰으로 사용할 `name` 속성을 포함하는 옵션 객체를 전달합니다. `ClientsModule`에 대한 자세한 내용은 <a href="https://docs.nestjs.com/microservices/basics#client">여기</a>에서 읽을 수 있습니다.
+인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`을 사용하여 클라이언트 인스턴스를 생성하려면 이를 임포트하고 `register()` 메서드를 사용하여 `createMicroservice()` 메서드에서 위에 표시된 것과 동일한 속성과 인젝션 토큰으로 사용할 `name` 속성을 포함하는 옵션 객체를 전달합니다. `ClientsModule`에 대한 자세한 내용은 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">여기</a>에서 읽을 수 있습니다.
 
 ```typescript
 @Module({
@@ -90,7 +90,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 })
 ```
 
-클라이언트를 생성하는 다른 옵션( `ClientProxyFactory` 또는 `@Client()` )도 사용할 수 있습니다. 이에 대한 내용은 <a href="https://docs.nestjs.com/microservices/basics#client">여기</a>에서 읽을 수 있습니다.
+클라이언트를 생성하는 다른 옵션( `ClientProxyFactory` 또는 `@Client()` )도 사용할 수 있습니다. 이에 대한 내용은 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">여기</a>에서 읽을 수 있습니다.
 
 #### 컨텍스트
 

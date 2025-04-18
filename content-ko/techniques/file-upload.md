@@ -43,7 +43,7 @@ uploadFile(file) {
 
 #### 파일 유효성 검사
 
-종종 파일 크기나 파일 MIME 타입과 같은 들어오는 파일 메타데이터의 유효성을 검사하는 것이 유용할 수 있습니다. 이를 위해 사용자 지정 [파이프](https://docs.nestjs.com/pipes)를 생성하고 `UploadedFile` 데코레이터로 주석이 달린 매개변수에 바인딩할 수 있습니다. 아래 예시는 기본적인 파일 크기 유효성 검사 파이프가 어떻게 구현될 수 있는지 보여줍니다.
+종종 파일 크기나 파일 MIME 타입과 같은 들어오는 파일 메타데이터의 유효성을 검사하는 것이 유용할 수 있습니다. 이를 위해 사용자 지정 [파이프](https://nestjs.dokidocs.dev/pipes)를 생성하고 `UploadedFile` 데코레이터로 주석이 달린 매개변수에 바인딩할 수 있습니다. 아래 예시는 기본적인 파일 크기 유효성 검사 파이프가 어떻게 구현될 수 있는지 보여줍니다.
 
 ```typescript
 import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
@@ -288,7 +288,7 @@ MulterModule.registerAsync({
 });
 ```
 
-다른 [팩토리 프로바이더](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)와 마찬가지로, 우리의 팩토리 함수는 `async`일 수 있으며 `inject`를 통해 의존성을 주입받을 수 있습니다.
+다른 [팩토리 프로바이더](https://nestjs.dokidocs.dev/fundamentals/custom-providers#factory-providers-usefactory)와 마찬가지로, 우리의 팩토리 함수는 `async`일 수 있으며 `inject`를 통해 의존성을 주입받을 수 있습니다.
 
 ```typescript
 MulterModule.registerAsync({

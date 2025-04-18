@@ -1,10 +1,10 @@
 ### 커스텀 프로바이더
 
-이전 장에서 **의존성 주입(DI)**과 Nest에서 어떻게 사용되는지에 대해 다양한 측면을 다루었습니다. 한 가지 예로 인스턴스(종종 서비스 프로바이더)를 클래스에 주입하는 데 사용되는 [생성자 기반](https://docs.nestjs.com/providers#dependency-injection) 의존성 주입이 있습니다. 의존성 주입이 Nest 코어에 근본적으로 내장되어 있다는 사실에 놀라지 않을 것입니다. 지금까지는 하나의 주요 패턴만 살펴보았습니다. 애플리케이션이 더 복잡해짐에 따라 DI 시스템의 모든 기능을 활용해야 할 수도 있으므로, 더 자세히 살펴보겠습니다.
+이전 장에서 **의존성 주입(DI)**과 Nest에서 어떻게 사용되는지에 대해 다양한 측면을 다루었습니다. 한 가지 예로 인스턴스(종종 서비스 프로바이더)를 클래스에 주입하는 데 사용되는 [생성자 기반](https://nestjs.dokidocs.dev/providers#dependency-injection) 의존성 주입이 있습니다. 의존성 주입이 Nest 코어에 근본적으로 내장되어 있다는 사실에 놀라지 않을 것입니다. 지금까지는 하나의 주요 패턴만 살펴보았습니다. 애플리케이션이 더 복잡해짐에 따라 DI 시스템의 모든 기능을 활용해야 할 수도 있으므로, 더 자세히 살펴보겠습니다.
 
 #### DI 기본 원리
 
-의존성 주입은 [제어의 역전(IoC)](https://en.wikipedia.org/wiki/Inversion_of_control) 기술입니다. 코드에서 명령적으로 종속성을 인스턴스화하는 대신, IoC 컨테이너(우리의 경우 NestJS 런타임 시스템)에 종속성의 인스턴스화를 위임합니다. [프로바이더 장](https://docs.nestjs.com/providers)에 있는 다음 예제에서 어떤 일이 벌어지는지 살펴보겠습니다.
+의존성 주입은 [제어의 역전(IoC)](https://en.wikipedia.org/wiki/Inversion_of_control) 기술입니다. 코드에서 명령적으로 종속성을 인스턴스화하는 대신, IoC 컨테이너(우리의 경우 NestJS 런타임 시스템)에 종속성의 인스턴스화를 위임합니다. [프로바이더 장](https://nestjs.dokidocs.dev/providers)에 있는 다음 예제에서 어떤 일이 벌어지는지 살펴보겠습니다.
 
 먼저 프로바이더를 정의합니다. `@Injectable()` 데코레이터는 `CatsService` 클래스를 프로바이더로 표시합니다.
 
@@ -168,7 +168,7 @@ export class AppModule {}
 
 #### 클래스 기반이 아닌 프로바이더 토큰
 
-지금까지 프로바이더 토큰으로 클래스 이름(프로바이더 배열의 `providers` 목록에 있는 프로바이더의 `provide` 속성 값)을 사용했습니다. 이는 종속성이 클래스 이름으로 선언되어야 하는 표준 [생성자 기반 주입](https://docs.nestjs.com/providers#dependency-injection) 패턴과 일치합니다. (이 개념이 완전히 명확하지 않다면 <a href="/fundamentals/custom-providers#di-fundamentals">DI 기본 원리</a>를 다시 참조하여 토큰에 대해 다시 살펴보세요). 때로는 DI 토큰으로 문자열이나 심볼을 사용할 유연성이 필요할 수 있습니다. 예를 들면 다음과 같습니다.
+지금까지 프로바이더 토큰으로 클래스 이름(프로바이더 배열의 `providers` 목록에 있는 프로바이더의 `provide` 속성 값)을 사용했습니다. 이는 종속성이 클래스 이름으로 선언되어야 하는 표준 [생성자 기반 주입](https://nestjs.dokidocs.dev/providers#dependency-injection) 패턴과 일치합니다. (이 개념이 완전히 명확하지 않다면 <a href="/fundamentals/custom-providers#di-fundamentals">DI 기본 원리</a>를 다시 참조하여 토큰에 대해 다시 살펴보세요). 때로는 DI 토큰으로 문자열이나 심볼을 사용할 유연성이 필요할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```typescript
 import { connection } from './connection';
@@ -188,7 +188,7 @@ export class AppModule {}
 
 > warning **참고** 토큰 값으로 문자열을 사용하는 것 외에도 JavaScript [심볼](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) 또는 TypeScript [열거형(enums)](https://www.typescriptlang.org/docs/handbook/enums.html)도 사용할 수 있습니다.
 
-이전에 표준 [생성자 기반 주입](https://docs.nestjs.com/providers#dependency-injection) 패턴을 사용하여 프로바이더를 주입하는 방법을 보았습니다. 이 패턴은 종속성이 클래스 이름으로 선언되어야 **합니다**. `'CONNECTION'` 커스텀 프로바이더는 문자열 값 토큰을 사용합니다. 이러한 프로바이더를 주입하는 방법을 살펴보겠습니다. 이를 위해 `@Inject()` 데코레이터를 사용합니다. 이 데코레이터는 하나의 인자(토큰)를 받습니다.
+이전에 표준 [생성자 기반 주입](https://nestjs.dokidocs.dev/providers#dependency-injection) 패턴을 사용하여 프로바이더를 주입하는 방법을 보았습니다. 이 패턴은 종속성이 클래스 이름으로 선언되어야 **합니다**. `'CONNECTION'` 커스텀 프로바이더는 문자열 값 토큰을 사용합니다. 이러한 프로바이더를 주입하는 방법을 살펴보겠습니다. 이를 위해 `@Inject()` 데코레이터를 사용합니다. 이 데코레이터는 하나의 인자(토큰)를 받습니다.
 
 ```typescript
 @@filename()

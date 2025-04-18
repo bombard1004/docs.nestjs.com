@@ -959,7 +959,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'myjwt')
 
 #### GraphQL
 
-[GraphQL](https://docs.nestjs.com/graphql/quick-start)과 함께 AuthGuard를 사용하려면 내장 `AuthGuard` 클래스를 확장하고 `getRequest()` 메서드를 재정의합니다.
+[GraphQL](https://nestjs.dokidocs.dev/graphql/quick-start)과 함께 AuthGuard를 사용하려면 내장 `AuthGuard` 클래스를 확장하고 `getRequest()` 메서드를 재정의합니다.
 
 ```typescript
 @Injectable()

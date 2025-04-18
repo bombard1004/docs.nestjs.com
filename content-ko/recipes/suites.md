@@ -301,4 +301,4 @@ describe('Cats Module Integration Test', () => {
 - **도구**: Nest의 `TestingModule`, `supertest`.
 - **예제**: HTTP 요청을 시뮬레이션하기 위해 `supertest`를 사용하여 `CatsModule` 테스트.
 
-E2E 테스트 설정 및 실행에 대한 자세한 내용은 [NestJS 공식 테스트 가이드](https://docs.nestjs.com/fundamentals/testing#end-to-end-testing)를 참조하세요.
+E2E 테스트 설정 및 실행에 대한 자세한 내용은 [NestJS 공식 테스트 가이드](https://nestjs.dokidocs.dev/fundamentals/testing#end-to-end-testing)를 참조하세요.

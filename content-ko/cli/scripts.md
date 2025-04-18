@@ -16,15 +16,15 @@ Nest 애플리케이션은 실행 전에 JavaScript로 컴파일되어야 하는
 
 #### 빌드
 
-`nest build`는 표준 `tsc` 컴파일러 또는 `swc` 컴파일러([표준 프로젝트](https://docs.nestjs.com/cli/overview#project-structure)의 경우) 또는 `ts-loader`를 사용하는 webpack 번들러([모노레포](https://docs.nestjs.com/cli/overview#project-structure)의 경우) 위에 있는 래퍼입니다. `tsconfig-paths`를 즉시 처리하는 것 외에는 다른 컴파일 기능이나 단계를 추가하지 않습니다. 이 명령이 존재하는 이유는 대부분의 개발자가 특히 Nest를 처음 시작할 때 때때로 까다로울 수 있는 컴파일러 옵션(예: `tsconfig.json` 파일)을 조정할 필요가 없기 때문입니다.
+`nest build`는 표준 `tsc` 컴파일러 또는 `swc` 컴파일러([표준 프로젝트](https://nestjs.dokidocs.dev/cli/overview#project-structure)의 경우) 또는 `ts-loader`를 사용하는 webpack 번들러([모노레포](https://nestjs.dokidocs.dev/cli/overview#project-structure)의 경우) 위에 있는 래퍼입니다. `tsconfig-paths`를 즉시 처리하는 것 외에는 다른 컴파일 기능이나 단계를 추가하지 않습니다. 이 명령이 존재하는 이유는 대부분의 개발자가 특히 Nest를 처음 시작할 때 때때로 까다로울 수 있는 컴파일러 옵션(예: `tsconfig.json` 파일)을 조정할 필요가 없기 때문입니다.
 
-자세한 내용은 [nest build](https://docs.nestjs.com/cli/usages#nest-build) 문서를 참조하세요.
+자세한 내용은 [nest build](https://nestjs.dokidocs.dev/cli/usages#nest-build) 문서를 참조하세요.
 
 #### 실행
 
 `nest start`는 프로젝트가 빌드되었는지 확인하고(`nest build`와 동일), 컴파일된 애플리케이션을 실행하기 위해 이식 가능하고 쉬운 방식으로 `node` 명령을 호출합니다. 빌드와 마찬가지로, `nest start` 명령 및 해당 옵션을 사용하거나 완전히 대체하여 필요에 따라 이 프로세스를 자유롭게 사용자 정의할 수 있습니다. 전체 프로세스는 표준 TypeScript 애플리케이션 빌드 및 실행 파이프라인이며, 프로세스를 그렇게 관리하는 것을 자유롭게 할 수 있습니다.
 
-자세한 내용은 [nest start](https://docs.nestjs.com/cli/usages#nest-start) 문서를 참조하세요.
+자세한 내용은 [nest start](https://nestjs.dokidocs.dev/cli/usages#nest-start) 문서를 참조하세요.
 
 #### 생성
 

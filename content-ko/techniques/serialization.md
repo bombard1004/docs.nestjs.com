@@ -6,7 +6,7 @@
 
 Nest는 이러한 작업이 간단하게 수행될 수 있도록 돕는 내장 기능을 제공합니다. `ClassSerializerInterceptor` 인터셉터는 강력한 [class-transformer](https://github.com/typestack/class-transformer) 패키지를 사용하여 객체를 변환하는 선언적이고 확장 가능한 방법을 제공합니다. 인터셉터가 수행하는 기본 작업은 메서드 핸들러가 반환하는 값을 가져와 [class-transformer](https://github.com/typestack/class-transformer)의 `instanceToPlain()` 함수를 적용하는 것입니다. 이렇게 함으로써 아래에 설명된 대로 엔티티/DTO 클래스에 `class-transformer` 데코레이터로 표현된 규칙을 적용할 수 있습니다.
 
-> info **힌트** 직렬화는 [StreamableFile](https://docs.nestjs.com/techniques/streaming-files#streamable-file-class) 응답에는 적용되지 않습니다.
+> info **힌트** 직렬화는 [StreamableFile](https://nestjs.dokidocs.dev/techniques/streaming-files#streamable-file-class) 응답에는 적용되지 않습니다.
 
 #### 속성 제외 (Exclude properties)
 
@@ -58,7 +58,7 @@ findOne(): UserEntity {
 }
 ```
 
-인터셉터는 애플리케이션 전반에 적용될 수 있습니다([여기](https://docs.nestjs.com/interceptors#binding-interceptors)에서 설명). 인터셉터와 엔티티 클래스 선언의 조합은 `UserEntity`를 반환하는 **모든** 메서드가 `password` 속성을 확실히 제거하도록 보장합니다. 이를 통해 이 비즈니스 규칙에 대한 중앙 집중식 시행 조치를 얻을 수 있습니다.
+인터셉터는 애플리케이션 전반에 적용될 수 있습니다([여기](https://nestjs.dokidocs.dev/interceptors#binding-interceptors)에서 설명). 인터셉터와 엔티티 클래스 선언의 조합은 `UserEntity`를 반환하는 **모든** 메서드가 `password` 속성을 확실히 제거하도록 보장합니다. 이를 통해 이 비즈니스 규칙에 대한 중앙 집중식 시행 조치를 얻을 수 있습니다.
 
 #### 속성 노출 (Expose properties)
 

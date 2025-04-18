@@ -2,7 +2,7 @@
 
 [GraphQL](https://graphql.org/)은 API를 위한 강력한 쿼리 언어이며 기존 데이터로 해당 쿼리를 처리하기 위한 런타임입니다. 이는 REST API에서 일반적으로 발생하는 많은 문제를 해결하는 우아한 접근 방식입니다. 배경 정보로, GraphQL과 REST 간의 [비교](https://www.apollographql.com/blog/graphql-vs-rest)를 읽어보시는 것을 추천합니다. GraphQL과 [TypeScript](https://www.typescriptlang.org/)를 결합하면 GraphQL 쿼리에서 더 나은 타입 안전성을 확보하여 종단 간 타이핑을 제공합니다.
 
-이 챕터에서는 GraphQL에 대한 기본적인 이해를 가정하고, 내장된 `@nestjs/graphql` 모듈 작업 방법에 초점을 맞춥니다. `GraphQLModule`은 [Apollo](https://www.apollographql.com/) 서버(with the `@nestjs/apollo` driver) 및 [Mercurius](https://github.com/mercurius-js/mercurius)(with the `@nestjs/mercurius`)를 사용하도록 구성할 수 있습니다. Nest와 함께 GraphQL을 사용하는 간단한 방법을 제공하기 위해 검증된 GraphQL 패키지에 대한 공식 통합을 제공합니다([여기](https://docs.nestjs.com/graphql/quick-start#third-party-integrations)에서 더 많은 통합 정보를 확인하세요).
+이 챕터에서는 GraphQL에 대한 기본적인 이해를 가정하고, 내장된 `@nestjs/graphql` 모듈 작업 방법에 초점을 맞춥니다. `GraphQLModule`은 [Apollo](https://www.apollographql.com/) 서버(with the `@nestjs/apollo` driver) 및 [Mercurius](https://github.com/mercurius-js/mercurius)(with the `@nestjs/mercurius`)를 사용하도록 구성할 수 있습니다. Nest와 함께 GraphQL을 사용하는 간단한 방법을 제공하기 위해 검증된 GraphQL 패키지에 대한 공식 통합을 제공합니다([여기](https://nestjs.dokidocs.dev/graphql/quick-start#third-party-integrations)에서 더 많은 통합 정보를 확인하세요).
 
 자신만의 전용 드라이버를 구축할 수도 있습니다([여기](/graphql/other-features#creating-a-custom-driver)에서 자세한 내용을 읽어보세요).
 
@@ -286,7 +286,7 @@ const { schema } = app.get(GraphQLSchemaHost);
 }),
 ```
 
-다른 팩토리 프로바이더와 마찬가지로, 우리의 팩토리 함수는 <a href="https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory">비동기</a>일 수 있으며 `inject`를 통해 의존성을 주입할 수 있습니다.
+다른 팩토리 프로바이더와 마찬가지로, 우리의 팩토리 함수는 <a href="https://nestjs.dokidocs.dev/fundamentals/custom-providers#factory-providers-usefactory">비동기</a>일 수 있으며 `inject`를 통해 의존성을 주입할 수 있습니다.
 
 ```typescript
 GraphQLModule.forRootAsync<ApolloDriverConfig>({

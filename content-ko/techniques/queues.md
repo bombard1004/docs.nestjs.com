@@ -46,7 +46,7 @@ export class AppModule {}
 -   `prefix: string` - 모든 큐 키에 대한 접두사입니다. 선택 사항입니다.
 -   `defaultJobOptions: JobOpts` - 새로운 작업에 대한 기본 설정을 제어하는 옵션입니다. 자세한 내용은 [JobOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd)를 참조하세요. 선택 사항입니다.
 -   `settings: AdvancedSettings` - 고급 큐 구성 설정입니다. 일반적으로 변경하지 않아야 합니다. 자세한 내용은 [AdvancedSettings](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)를 참조하세요. 선택 사항입니다.
--   `extraOptions` - 모듈 초기화를 위한 추가 옵션입니다. 자세한 내용은 [Manual Registration](https://docs.nestjs.com/techniques/queues#manual-registration)를 참조하세요.
+-   `extraOptions` - 모듈 초기화를 위한 추가 옵션입니다. 자세한 내용은 [Manual Registration](https://nestjs.dokidocs.dev/techniques/queues#manual-registration)를 참조하세요.
 
 모든 옵션은 선택 사항이며, 큐 동작을 세부적으로 제어할 수 있도록 합니다. 이 옵션들은 BullMQ `Queue` 생성자에 직접 전달됩니다. 이러한 옵션 및 기타 옵션에 대한 자세한 내용은 [여기](https://api.docs.bullmq.io/interfaces/v4.QueueOptions.html)에서 읽어보세요.
 
@@ -401,7 +401,7 @@ BullModule.forRootAsync({
 });
 ```
 
-우리의 팩토리는 다른 [비동기 프로바이더](https://docs.nestjs.com/fundamentals/async-providers)와 마찬가지로 동작합니다 (예: `async`일 수 있으며 `inject`를 통해 종속성을 주입할 수 있습니다).
+우리의 팩토리는 다른 [비동기 프로바이더](https://nestjs.dokidocs.dev/fundamentals/async-providers)와 마찬가지로 동작합니다 (예: `async`일 수 있으며 `inject`를 통해 종속성을 주입할 수 있습니다).
 
 ```typescript
 BullModule.forRootAsync({
@@ -906,7 +906,7 @@ BullModule.forRootAsync({
 });
 ```
 
-우리의 팩토리는 다른 [비동기 프로바이더](https://docs.nestjs.com/fundamentals/async-providers)와 마찬가지로 동작합니다 (예: `async`일 수 있으며 `inject`를 통해 종속성을 주입할 수 있습니다).
+우리의 팩토리는 다른 [비동기 프로바이더](https://nestjs.dokidocs.dev/fundamentals/async-providers)와 마찬가지로 동작합니다 (예: `async`일 수 있으며 `inject`를 통해 종속성을 주입할 수 있습니다).
 
 ```typescript
 BullModule.forRootAsync({

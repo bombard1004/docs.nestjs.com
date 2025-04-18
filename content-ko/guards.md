@@ -53,7 +53,7 @@ export class AuthGuard {
 
 #### 실행 컨텍스트
 
-`canActivate()` 함수는 단 하나의 인수인 `ExecutionContext` 인스턴스를 받습니다. `ExecutionContext`는 `ArgumentsHost`를 상속합니다. 예외 필터 챕터에서 `ArgumentsHost`에 대해 이전에 살펴봤습니다. 위 예제에서는 이전에 사용했던 `ArgumentsHost`에 정의된 동일한 헬퍼 메소드를 사용하여 `Request` 객체에 대한 참조를 얻고 있습니다. 이 주제에 대해 더 자세히 알아보려면 [예외 필터](https://docs.nestjs.com/exception-filters#arguments-host) 챕터의 **Arguments host** 섹션을 참조하십시오.
+`canActivate()` 함수는 단 하나의 인수인 `ExecutionContext` 인스턴스를 받습니다. `ExecutionContext`는 `ArgumentsHost`를 상속합니다. 예외 필터 챕터에서 `ArgumentsHost`에 대해 이전에 살펴봤습니다. 위 예제에서는 이전에 사용했던 `ArgumentsHost`에 정의된 동일한 헬퍼 메소드를 사용하여 `Request` 객체에 대한 참조를 얻고 있습니다. 이 주제에 대해 더 자세히 알아보려면 [예외 필터](https://nestjs.dokidocs.dev/exception-filters#arguments-host) 챕터의 **Arguments host** 섹션을 참조하십시오.
 
 `ArgumentsHost`를 확장함으로써 `ExecutionContext`는 현재 실행 프로세스에 대한 추가 정보를 제공하는 여러 새로운 헬퍼 메소드를 추가합니다. 이러한 세부 정보는 광범위한 컨트롤러, 메소드 및 실행 컨텍스트에서 작동할 수 있는 보다 일반적인 가드를 구축하는 데 유용할 수 있습니다. `ExecutionContext`에 대해 더 자세히 알아보려면 [여기](/fundamentals/execution-context)를 참조하십시오.
 
@@ -143,7 +143,7 @@ export class AppModule {}
 
 `RolesGuard`는 작동하지만 아직 그다지 스마트하지는 않습니다. 가드의 가장 중요한 기능인 [실행 컨텍스트](/fundamentals/execution-context)를 아직 활용하고 있지 않습니다. 역할에 대해 아직 모르거나, 각 핸들러에 어떤 역할이 허용되는지 알지 못합니다. 예를 들어, `CatsController`는 다른 라우트에 대해 다른 권한 체계를 가질 수 있습니다. 일부는 관리자 사용자에게만 제공될 수 있고, 다른 일부는 모든 사람에게 열려 있을 수 있습니다. 유연하고 재사용 가능한 방식으로 역할을 라우트와 어떻게 매칭할 수 있을까요?
 
-여기서 **커스텀 메타데이터**가 활용됩니다([여기](https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata)에서 자세히 알아보십시오). Nest는 `Reflector.createDecorator` 정적 메소드를 통해 생성된 데코레이터나 내장된 `@SetMetadata()` 데코레이터를 통해 라우트 핸들러에 커스텀 **메타데이터**를 첨부하는 기능을 제공합니다.
+여기서 **커스텀 메타데이터**가 활용됩니다([여기](https://nestjs.dokidocs.dev/fundamentals/execution-context#reflection-and-metadata)에서 자세히 알아보십시오). Nest는 `Reflector.createDecorator` 정적 메소드를 통해 생성된 데코레이터나 내장된 `@SetMetadata()` 데코레이터를 통해 라우트 핸들러에 커스텀 **메타데이터**를 첨부하는 기능을 제공합니다.
 
 예를 들어, `Reflector.createDecorator` 메소드를 사용하여 핸들러에 메타데이터를 첨부할 `@Roles()` 데코레이터를 생성해 보겠습니다. `Reflector`는 프레임워크에 의해 기본적으로 제공되며 `@nestjs/core` 패키지에서 노출됩니다.
 
@@ -230,7 +230,7 @@ export class RolesGuard {
 
 > warning **경고** `matchRoles()` 함수 내부의 로직은 필요에 따라 간단하거나 복잡할 수 있습니다. 이 예제의 주요 목적은 가드가 요청/응답 사이클에 어떻게 맞춰지는지 보여주는 것입니다.
 
-컨텍스트에 민감한 방식으로 `Reflector`를 활용하는 방법에 대한 자세한 내용은 **실행 컨텍스트** 챕터의 <a href="https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata">반영(Reflection) 및 메타데이터</a> 섹션을 참조하십시오.
+컨텍스트에 민감한 방식으로 `Reflector`를 활용하는 방법에 대한 자세한 내용은 **실행 컨텍스트** 챕터의 <a href="https://nestjs.dokidocs.dev/fundamentals/execution-context#reflection-and-metadata">반영(Reflection) 및 메타데이터</a> 섹션을 참조하십시오.
 
 권한이 부족한 사용자가 엔드포인트를 요청하면 Nest는 자동으로 다음 응답을 반환합니다.
 

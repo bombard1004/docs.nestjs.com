@@ -40,7 +40,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 <table>
   <tr>
     <td><code>queue</code></td>
-    <td>서버가 구독해야 하는 큐 (이 설정을 무시하려면 <code>undefined</code>로 둡니다). NATS 큐 그룹에 대한 자세한 내용은 <a href="https://docs.nestjs.com/microservices/nats#queue-groups">아래</a>에서 읽어보세요.
+    <td>서버가 구독해야 하는 큐 (이 설정을 무시하려면 <code>undefined</code>로 둡니다). NATS 큐 그룹에 대한 자세한 내용은 <a href="https://nestjs.dokidocs.dev/microservices/nats#queue-groups">아래</a>에서 읽어보세요.
     </td>
   </tr>
   <tr>
@@ -55,9 +55,9 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 #### 클라이언트
 
-다른 마이크로서비스 트랜스포터와 마찬가지로, NATS `ClientProxy` 인스턴스를 생성하는 [몇 가지 옵션](https://docs.nestjs.com/microservices/basics#client)이 있습니다.
+다른 마이크로서비스 트랜스포터와 마찬가지로, NATS `ClientProxy` 인스턴스를 생성하는 [몇 가지 옵션](https://nestjs.dokidocs.dev/microservices/basics#client)이 있습니다.
 
-인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`로 클라이언트 인스턴스를 생성하려면, 이를 임포트하고 `register()` 메서드를 사용하여 위에서 `createMicroservice()` 메서드에 표시된 것과 동일한 속성을 가진 옵션 객체와 주입 토큰으로 사용될 `name` 속성을 전달합니다. `ClientsModule`에 대한 자세한 내용은 [여기](https://docs.nestjs.com/microservices/basics#client)에서 읽어보세요.
+인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`로 클라이언트 인스턴스를 생성하려면, 이를 임포트하고 `register()` 메서드를 사용하여 위에서 `createMicroservice()` 메서드에 표시된 것과 동일한 속성을 가진 옵션 객체와 주입 토큰으로 사용될 `name` 속성을 전달합니다. `ClientsModule`에 대한 자세한 내용은 [여기](https://nestjs.dokidocs.dev/microservices/basics#client)에서 읽어보세요.
 
 ```typescript
 @Module({
@@ -76,15 +76,15 @@ const app = await NestFactory.createMicroservice(AppModule, {
 })
 ```
 
-`ClientProxyFactory` 또는 `@Client()`와 같은 클라이언트를 생성하는 다른 옵션도 사용할 수 있습니다. 이에 대한 내용은 [여기](https://docs.nestjs.com/microservices/basics#client)에서 읽어볼 수 있습니다.
+`ClientProxyFactory` 또는 `@Client()`와 같은 클라이언트를 생성하는 다른 옵션도 사용할 수 있습니다. 이에 대한 내용은 [여기](https://nestjs.dokidocs.dev/microservices/basics#client)에서 읽어볼 수 있습니다.
 
 #### 요청-응답 (Request-response)
 
-**요청-응답** 메시지 스타일([자세히 읽어보기](https://docs.nestjs.com/microservices/basics#request-response))의 경우, NATS 트랜스포터는 NATS 내장 [요청-응답(Request-Reply)](https://docs.nats.io/nats-concepts/reqreply) 메커니즘을 사용하지 않습니다. 대신, 고유한 응답 주제 이름과 함께 `publish()` 메서드를 사용하여 특정 주제에 "요청"이 발행되고, 응답자들은 해당 주제를 수신하고 응답 주제로 응답을 보냅니다. 응답 주제는 요청자에게 동적으로 다시 전달되며, 양측의 위치와는 상관없습니다.
+**요청-응답** 메시지 스타일([자세히 읽어보기](https://nestjs.dokidocs.dev/microservices/basics#request-response))의 경우, NATS 트랜스포터는 NATS 내장 [요청-응답(Request-Reply)](https://docs.nats.io/nats-concepts/reqreply) 메커니즘을 사용하지 않습니다. 대신, 고유한 응답 주제 이름과 함께 `publish()` 메서드를 사용하여 특정 주제에 "요청"이 발행되고, 응답자들은 해당 주제를 수신하고 응답 주제로 응답을 보냅니다. 응답 주제는 요청자에게 동적으로 다시 전달되며, 양측의 위치와는 상관없습니다.
 
 #### 이벤트 기반 (Event-based)
 
-**이벤트 기반** 메시지 스타일([자세히 읽어보기](https://docs.nestjs.com/microservices/basics#event-based))의 경우, NATS 트랜스포터는 NATS 내장 [발행-구독(Publish-Subscribe)](https://docs.nats.io/nats-concepts/pubsub) 메커니즘을 사용합니다. 발행자는 주제에 메시지를 보내고 해당 주제를 수신하는 활성 구독자는 모두 메시지를 받습니다. 구독자는 정규 표현식처럼 작동하는 와일드카드 주제에 대한 관심을 등록할 수도 있습니다. 이 일대다 패턴을 팬아웃(fan-out)이라고도 합니다.
+**이벤트 기반** 메시지 스타일([자세히 읽어보기](https://nestjs.dokidocs.dev/microservices/basics#event-based))의 경우, NATS 트랜스포터는 NATS 내장 [발행-구독(Publish-Subscribe)](https://docs.nats.io/nats-concepts/pubsub) 메커니즘을 사용합니다. 발행자는 주제에 메시지를 보내고 해당 주제를 수신하는 활성 구독자는 모두 메시지를 받습니다. 구독자는 정규 표현식처럼 작동하는 와일드카드 주제에 대한 관심을 등록할 수도 있습니다. 이 일대다 패턴을 팬아웃(fan-out)이라고도 합니다.
 
 #### 큐 그룹 (Queue groups)
 

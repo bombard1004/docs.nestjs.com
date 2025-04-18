@@ -211,5 +211,5 @@ export class AppModule {}
 
 지금까지 Nest가 의존성 해결의 대부분의 세부 사항을 어떻게 자동으로 처리하는지 살펴보았습니다. 하지만 어떤 경우에는 내장된 의존성 주입 시스템에서 벗어나 프로바이더를 수동으로 검색하거나 인스턴스화해야 할 수 있습니다. 이러한 두 가지 기법을 아래에서 간략하게 설명합니다.
 
-- 기존 인스턴스를 검색하거나 프로바이더를 동적으로 인스턴스화하려면 [모듈 레퍼런스](https://docs.nestjs.com/fundamentals/module-ref)를 사용할 수 있습니다.
-- `bootstrap()` 함수 내에서 프로바이더를 얻으려면 (예: 스탠드얼론 애플리케이션의 경우 또는 부트스트래핑 중에 설정 서비스를 사용하기 위해), [스탠드얼론 애플리케이션](https://docs.nestjs.com/standalone-applications)을 확인해 보세요.
+- 기존 인스턴스를 검색하거나 프로바이더를 동적으로 인스턴스화하려면 [모듈 레퍼런스](https://nestjs.dokidocs.dev/fundamentals/module-ref)를 사용할 수 있습니다.
+- `bootstrap()` 함수 내에서 프로바이더를 얻으려면 (예: 스탠드얼론 애플리케이션의 경우 또는 부트스트래핑 중에 설정 서비스를 사용하기 위해), [스탠드얼론 애플리케이션](https://nestjs.dokidocs.dev/standalone-applications)을 확인해 보세요.

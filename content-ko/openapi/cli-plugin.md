@@ -57,7 +57,7 @@ export class CreateUserDto {
 
 따라서 문서 생성을 위한 자동 어노테이션에 의존하면서도 런타임 유효성 검사를 원한다면 class-validator 데코레이터가 여전히 필요합니다.
 
-> info **힌트** DTO에서 [`mapped types utilities`](https://docs.nestjs.com/openapi/mapped-types) (예: `PartialType`)를 사용할 때는 플러그인이 스키마를 인식하도록 `@nestjs/mapped-types` 대신 `@nestjs/swagger`에서 가져옵니다.
+> info **힌트** DTO에서 [`mapped types utilities`](https://nestjs.dokidocs.dev/openapi/mapped-types) (예: `PartialType`)를 사용할 때는 플러그인이 스키마를 인식하도록 `@nestjs/mapped-types` 대신 `@nestjs/swagger`에서 가져옵니다.
 
 플러그인은 **추상 구문 트리(Abstract Syntax Tree)**를 기반으로 적절한 데코레이터를 즉석에서 추가합니다. 따라서 코드 전체에 흩어져 있는 `@ApiProperty` 데코레이터로 고생할 필요가 없습니다.
 

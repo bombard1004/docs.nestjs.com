@@ -82,7 +82,7 @@ ConfigModule.forRoot({
 
 #### 모듈 전역 사용 (Use module globally)
 
-다른 모듈에서 `ConfigModule`을 사용하려면 (다른 Nest 모듈과 마찬가지로) 가져와야 합니다. 또는 아래와 같이 옵션 객체의 `isGlobal` 속성을 `true`로 설정하여 [글로벌 모듈](https://docs.nestjs.com/modules#global-modules)로 선언하십시오. 이 경우 루트 모듈(예: `AppModule`)에서 로드된 후에는 다른 모듈에서 `ConfigModule`을 가져올 필요가 없습니다.
+다른 모듈에서 `ConfigModule`을 사용하려면 (다른 Nest 모듈과 마찬가지로) 가져와야 합니다. 또는 아래와 같이 옵션 객체의 `isGlobal` 속성을 `true`로 설정하여 [글로벌 모듈](https://nestjs.dokidocs.dev/modules#global-modules)로 선언하십시오. 이 경우 루트 모듈(예: `AppModule`)에서 로드된 후에는 다른 모듈에서 `ConfigModule`을 가져올 필요가 없습니다.
 
 ```typescript
 ConfigModule.forRoot({

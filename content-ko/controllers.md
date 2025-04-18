@@ -8,7 +8,7 @@
 
 기본 컨트롤러를 생성하기 위해 클래스와 **데코레이터**를 사용합니다. 데코레이터는 클래스를 필요한 메타데이터와 연결하여 Nest가 요청을 해당 컨트롤러에 연결하는 라우팅 맵을 생성할 수 있도록 합니다.
 
-> info **힌트** 내장된 [유효성 검사](https://docs.nestjs.com/techniques/validation) 기능을 갖춘 CRUD 컨트롤러를 빠르게 생성하려면 CLI의 [CRUD 생성기](https://docs.nestjs.com/recipes/crud-generator#crud-generator)를 사용할 수 있습니다: `nest g resource [name]`.
+> info **힌트** 내장된 [유효성 검사](https://nestjs.dokidocs.dev/techniques/validation) 기능을 갖춘 CRUD 컨트롤러를 빠르게 생성하려면 CLI의 [CRUD 생성기](https://nestjs.dokidocs.dev/recipes/crud-generator#crud-generator)를 사용할 수 있습니다: `nest g resource [name]`.
 
 #### 라우팅
 
@@ -404,7 +404,7 @@ async create(createCatDto) {
 }
 ```
 
-> info **힌트** 우리의 `ValidationPipe`는 메서드 핸들러에서 받으면 안 되는 속성을 필터링할 수 있습니다. 이 경우 허용 가능한 속성을 화이트리스트에 추가할 수 있으며, 화이트리스트에 포함되지 않은 속성은 결과 객체에서 자동으로 제거됩니다. `CreateCatDto` 예제에서 우리의 화이트리스트는 `name`, `age`, `breed` 속성입니다. [여기](https://docs.nestjs.com/techniques/validation#stripping-properties)에서 더 자세히 알아보십시오.
+> info **힌트** 우리의 `ValidationPipe`는 메서드 핸들러에서 받으면 안 되는 속성을 필터링할 수 있습니다. 이 경우 허용 가능한 속성을 화이트리스트에 추가할 수 있으며, 화이트리스트에 포함되지 않은 속성은 결과 객체에서 자동으로 제거됩니다. `CreateCatDto` 예제에서 우리의 화이트리스트는 `name`, `age`, `breed` 속성입니다. [여기](https://nestjs.dokidocs.dev/techniques/validation#stripping-properties)에서 더 자세히 알아보십시오.
 
 #### 쿼리 파라미터
 

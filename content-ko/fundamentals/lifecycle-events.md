@@ -10,7 +10,7 @@ Nest 애플리케이션과 모든 애플리케이션 요소는 Nest에 의해 �
 
 #### 라이프사이클 이벤트
 
-라이프사이클 이벤트는 애플리케이션 부트스트랩 및 종료 중에 발생합니다. Nest는 다음 각 라이프사이클 이벤트 발생 시 모듈, 프로바이더 및 컨트롤러에 등록된 라이프사이클 훅 메서드를 호출합니다 (**종료 훅**은 [아래](https://docs.nestjs.com/fundamentals/lifecycle-events#application-shutdown) 설명된 대로 먼저 활성화해야 합니다). 위 다이어그램에 표시된 것처럼 Nest는 연결 수신을 시작하고 연결 수신을 중지하기 위해 적절한 내부 메서드도 호출합니다.
+라이프사이클 이벤트는 애플리케이션 부트스트랩 및 종료 중에 발생합니다. Nest는 다음 각 라이프사이클 이벤트 발생 시 모듈, 프로바이더 및 컨트롤러에 등록된 라이프사이클 훅 메서드를 호출합니다 (**종료 훅**은 [아래](https://nestjs.dokidocs.dev/fundamentals/lifecycle-events#application-shutdown) 설명된 대로 먼저 활성화해야 합니다). 위 다이어그램에 표시된 것처럼 Nest는 연결 수신을 시작하고 연결 수신을 중지하기 위해 적절한 내부 메서드도 호출합니다.
 
 다음 표에서 `onModuleInit` 및 `onApplicationBootstrap`는 `app.init()` 또는 `app.listen()`을 명시적으로 호출한 경우에만 트리거됩니다.
 

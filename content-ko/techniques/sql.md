@@ -624,7 +624,7 @@ TypeOrmModule.forRootAsync({
 });
 ```
 
-우리의 팩토리는 다른 [비동기 프로바이더](https://docs.nestjs.com/fundamentals/async-providers)처럼 동작합니다 (예: `async`일 수 있고 `inject`를 통해 종속성을 주입할 수 있습니다).
+우리의 팩토리는 다른 [비동기 프로바이더](https://nestjs.dokidocs.dev/fundamentals/async-providers)처럼 동작합니다 (예: `async`일 수 있고 `inject`를 통해 종속성을 주입할 수 있습니다).
 
 ```typescript
 TypeOrmModule.forRootAsync({
@@ -1211,7 +1211,7 @@ SequelizeModule.forRootAsync({
 });
 ```
 
-우리의 팩토리는 다른 [비동기 프로바이더](https://docs.nestjs.com/fundamentals/async-providers)처럼 동작합니다 (예: `async`일 수 있고 `inject`를 통해 종속성을 주입할 수 있습니다).
+우리의 팩토리는 다른 [비동기 프로바이더](https://nestjs.dokidocs.dev/fundamentals/async-providers)처럼 동작합니다 (예: `async`일 수 있고 `inject`를 통해 종속성을 주입할 수 있습니다).
 
 ```typescript
 SequelizeModule.forRootAsync({

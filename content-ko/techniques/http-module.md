@@ -88,7 +88,7 @@ HttpModule.registerAsync({
 });
 ```
 
-다른 팩토리 제공자처럼, 우리의 팩토리 함수는 [비동기](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)일 수 있으며 `inject`를 통해 의존성을 주입할 수 있습니다.
+다른 팩토리 제공자처럼, 우리의 팩토리 함수는 [비동기](https://nestjs.dokidocs.dev/fundamentals/custom-providers#factory-providers-usefactory)일 수 있으며 `inject`를 통해 의존성을 주입할 수 있습니다.
 
 ```typescript
 HttpModule.registerAsync({

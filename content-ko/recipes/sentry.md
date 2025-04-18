@@ -95,7 +95,7 @@ export class YourCatchAllExceptionFilter implements ExceptionFilter {
 }
 ```
 
-기본적으로 오류 필터에 의해 잡히지 않은 처리되지 않은 예외만 Sentry에 보고됩니다. `HttpExceptions`([파생](https://docs.nestjs.com/exception-filters#built-in-http-exceptions) 예외 포함)도 대부분 제어 흐름 수단으로 작용하기 때문에 기본적으로 캡처되지 않습니다.
+기본적으로 오류 필터에 의해 잡히지 않은 처리되지 않은 예외만 Sentry에 보고됩니다. `HttpExceptions`([파생](https://nestjs.dokidocs.dev/exception-filters#built-in-http-exceptions) 예외 포함)도 대부분 제어 흐름 수단으로 작용하기 때문에 기본적으로 캡처되지 않습니다.
 
 전역 catch-all 예외 필터가 없다면, 메인 모듈의 프로바이더에 `SentryGlobalFilter`를 추가하세요. 이 필터는 다른 오류 필터에 의해 잡히지 않은 모든 처리되지 않은 오류를 Sentry에 보고합니다.
 

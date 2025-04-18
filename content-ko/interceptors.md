@@ -14,7 +14,7 @@
 
 #### 기본
 
-각 인터셉터는 두 개의 인수를 받는 `intercept()` 메서드를 구현합니다. 첫 번째 인수는 `ExecutionContext` 인스턴스입니다([가드](/guards)와 정확히 동일한 객체입니다). `ExecutionContext`는 `ArgumentsHost`를 상속합니다. `ArgumentsHost`는 예외 필터 챕터에서 이전에 보았습니다. 거기서 우리는 `ArgumentsHost`가 원래 핸들러에 전달된 인수에 대한 래퍼이며, 애플리케이션 유형에 따라 다른 인수 배열을 포함한다는 것을 보았습니다. 이 주제에 대한 자세한 내용은 [예외 필터](https://docs.nestjs.com/exception-filters#arguments-host)를 참조하십시오.
+각 인터셉터는 두 개의 인수를 받는 `intercept()` 메서드를 구현합니다. 첫 번째 인수는 `ExecutionContext` 인스턴스입니다([가드](/guards)와 정확히 동일한 객체입니다). `ExecutionContext`는 `ArgumentsHost`를 상속합니다. `ArgumentsHost`는 예외 필터 챕터에서 이전에 보았습니다. 거기서 우리는 `ArgumentsHost`가 원래 핸들러에 전달된 인수에 대한 래퍼이며, 애플리케이션 유형에 따라 다른 인수 배열을 포함한다는 것을 보았습니다. 이 주제에 대한 자세한 내용은 [예외 필터](https://nestjs.dokidocs.dev/exception-filters#arguments-host)를 참조하십시오.
 
 #### 실행 컨텍스트
 

@@ -167,7 +167,7 @@ export interface SwaggerCustomOptions {
   /**
    * `true`이면, Swagger 리소스 경로는 `setGlobalPrefix()`를 통해 설정된 전역 접두사로 시작됩니다.
    * 기본값: `false`.
-   * @see https://docs.nestjs.com/faq/global-prefix
+   * @see https://nestjs.dokidocs.dev/faq/global-prefix
    */
   useGlobalPrefix?: boolean;
 

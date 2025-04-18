@@ -288,7 +288,7 @@ app.enableVersioning({
 
 #### 미들웨어 버전 관리
 
-[미들웨어](https://docs.nestjs.com/middleware)도 버전 관리 메타데이터를 사용하여 특정 라우트의 버전에 대해 미들웨어를 구성할 수 있습니다. 이를 위해 `MiddlewareConsumer.forRoutes()` 메서드의 매개변수 중 하나로 버전 번호를 제공합니다:
+[미들웨어](https://nestjs.dokidocs.dev/middleware)도 버전 관리 메타데이터를 사용하여 특정 라우트의 버전에 대해 미들웨어를 구성할 수 있습니다. 이를 위해 `MiddlewareConsumer.forRoutes()` 메서드의 매개변수 중 하나로 버전 번호를 제공합니다:
 
 ```typescript
 @@filename(app.module)

@@ -39,9 +39,9 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 #### 클라이언트
 
-다른 마이크로서비스 트랜스포터와 마찬가지로, MQTT `ClientProxy` 인스턴스를 생성하기 위한 <a href="https://docs.nestjs.com/microservices/basics#client">몇 가지 옵션</a>이 있습니다.
+다른 마이크로서비스 트랜스포터와 마찬가지로, MQTT `ClientProxy` 인스턴스를 생성하기 위한 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">몇 가지 옵션</a>이 있습니다.
 
-인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`을 사용하여 클라이언트 인스턴스를 생성하려면, 이를 가져오고 `register()` 메서드를 사용하여 위에 `createMicroservice()` 메서드에 표시된 것과 동일한 속성을 가진 옵션 객체와 주입 토큰(injection token)으로 사용될 `name` 속성을 전달합니다. `ClientsModule`에 대해 자세히 알아보려면 <a href="https://docs.nestjs.com/microservices/basics#client">여기를 참조하세요</a>.
+인스턴스를 생성하는 한 가지 방법은 `ClientsModule`을 사용하는 것입니다. `ClientsModule`을 사용하여 클라이언트 인스턴스를 생성하려면, 이를 가져오고 `register()` 메서드를 사용하여 위에 `createMicroservice()` 메서드에 표시된 것과 동일한 속성을 가진 옵션 객체와 주입 토큰(injection token)으로 사용될 `name` 속성을 전달합니다. `ClientsModule`에 대해 자세히 알아보려면 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">여기를 참조하세요</a>.
 
 ```typescript
 @Module({
@@ -60,7 +60,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 })
 ```
 
-클라이언트를 생성하는 다른 옵션( `ClientProxyFactory` 또는 `@Client()`)도 사용할 수 있습니다. 이에 대해 알아보려면 <a href="https://docs.nestjs.com/microservices/basics#client">여기를 참조하세요</a>.
+클라이언트를 생성하는 다른 옵션( `ClientProxyFactory` 또는 `@Client()`)도 사용할 수 있습니다. 이에 대해 알아보려면 <a href="https://nestjs.dokidocs.dev/microservices/basics#client">여기를 참조하세요</a>.
 
 #### 컨텍스트
 
@@ -143,7 +143,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-토픽별 QoS가 필요한 경우 [사용자 지정 트랜스포터(Custom transporter)](https://docs.nestjs.com/microservices/custom-transport) 생성을 고려하세요.
+토픽별 QoS가 필요한 경우 [사용자 지정 트랜스포터(Custom transporter)](https://nestjs.dokidocs.dev/microservices/custom-transport) 생성을 고려하세요.
 
 #### 레코드 빌더
 

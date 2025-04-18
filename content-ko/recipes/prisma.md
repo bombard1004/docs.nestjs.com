@@ -23,7 +23,7 @@ $ npm install -g @nestjs/cli
 $ nest new hello-prisma
 ```
 
-이 명령으로 생성되는 프로젝트 파일에 대해 자세히 알아보려면 [첫 단계](https://docs.nestjs.com/first-steps) 페이지를 참조하세요. 또한 이제 `npm start`를 실행하여 애플리케이션을 시작할 수 있습니다. `http://localhost:3000/`에서 실행되는 REST API는 현재 `src/app.controller.ts`에 구현된 단일 경로를 제공합니다. 이 가이드 과정에서 _사용자_ 및 _게시물_에 대한 데이터를 저장하고 검색하는 추가 경로를 구현할 것입니다.
+이 명령으로 생성되는 프로젝트 파일에 대해 자세히 알아보려면 [첫 단계](https://nestjs.dokidocs.dev/first-steps) 페이지를 참조하세요. 또한 이제 `npm start`를 실행하여 애플리케이션을 시작할 수 있습니다. `http://localhost:3000/`에서 실행되는 REST API는 현재 `src/app.controller.ts`에 구현된 단일 경로를 제공합니다. 이 가이드 과정에서 _사용자_ 및 _게시물_에 대한 데이터를 저장하고 검색하는 추가 경로를 구현할 것입니다.
 
 #### Prisma 설정하기
 
@@ -88,7 +88,7 @@ generator client {
 DATABASE_URL="file:./dev.db"
 ```
 
-[ConfigModule](https://docs.nestjs.com/techniques/configuration)이 구성되어 있는지 확인하세요. 그렇지 않으면 `.env`에서 `DATABASE_URL` 변수가 선택되지 않습니다.
+[ConfigModule](https://nestjs.dokidocs.dev/techniques/configuration)이 구성되어 있는지 확인하세요. 그렇지 않으면 `.env`에서 `DATABASE_URL` 변수가 선택되지 않습니다.
 
 SQLite 데이터베이스는 단순한 파일입니다. SQLite 데이터베이스를 사용하기 위해 서버가 필요하지 않습니다. 따라서 _호스트_와 _포트_가 있는 연결 URL을 구성하는 대신, 이 경우 `dev.db`라는 로컬 파일을 가리키면 됩니다. 이 파일은 다음 단계에서 생성될 것입니다.
 

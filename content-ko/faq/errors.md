@@ -68,7 +68,7 @@ Please make sure that the argument ModuleRef at index [<index>] is available in 
 
 #### "순환 종속성" 오류
 
-때때로 애플리케이션에서 [순환 종속성](https://docs.nestjs.com/fundamentals/circular-dependency)을 피하기 어려울 수 있습니다. Nest가 이를 해결하도록 돕기 위해 몇 가지 조치를 취해야 합니다. 순환 종속성으로 인해 발생하는 오류는 다음과 같습니다.
+때때로 애플리케이션에서 [순환 종속성](https://nestjs.dokidocs.dev/fundamentals/circular-dependency)을 피하기 어려울 수 있습니다. Nest가 이를 해결하도록 돕기 위해 몇 가지 조치를 취해야 합니다. 순환 종속성으로 인해 발생하는 오류는 다음과 같습니다.
 
 ```bash
 Nest cannot create the <module> instance.
