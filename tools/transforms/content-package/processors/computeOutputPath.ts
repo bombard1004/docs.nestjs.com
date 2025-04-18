@@ -11,7 +11,7 @@ export class ComputeOutputPathProcessor implements Processor {
       if (doc.docType === 'content' || doc.docType === 'who-uses') {
         const filePath = doc.fileInfo.projectRelativePath;
         const distPath = filePath.slice(
-          'content'.length + 1,
+          'content-ko'.length + 1,
           filePath.length - 3 // strip extension
         );
 
