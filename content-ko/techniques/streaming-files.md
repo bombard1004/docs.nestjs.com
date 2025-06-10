@@ -46,7 +46,7 @@ export class FileController {
 }
 ```
 
-기본 콘텐츠 유형 (`Content-Type` HTTP 응답 헤더의 값)은 `application/octet-stream`입니다. 이 값을 사용자 정의해야 하는 경우 `StreamableFile`의 `type` 옵션을 사용하거나 `res.set` 메서드 또는 [`@Header()`](/controllers#headers) 데코레이터를 사용하여 다음과 같이 할 수 있습니다.
+기본 콘텐츠 유형 (`Content-Type` HTTP 응답 헤더의 값)은 `application/octet-stream`입니다. 이 값을 사용자 정의해야 하는 경우 `StreamableFile`의 `type` 옵션을 사용하거나 `res.set` 메서드 또는 [`@Header()`](/controllers#응답-헤더) 데코레이터를 사용하여 다음과 같이 할 수 있습니다.
 
 ```ts
 import { Controller, Get, StreamableFile, Res } from '@nestjs/common';

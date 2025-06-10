@@ -37,7 +37,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> info **힌트** `SwaggerModule#createDocument()` 팩토리 메서드는 특히 요청 시 Swagger 문서를 생성하는 데 사용됩니다. 이 접근 방식은 초기화 시간을 절약하는 데 도움이 되며, 결과 문서는 [OpenAPI 문서](https://swagger.io/specification/#openapi-document) 명세를 따르는 직렬화 가능한 객체입니다. HTTP를 통해 문서를 제공하는 대신 JSON 또는 YAML 파일로 저장하고 다양한 방식으로 사용할 수도 있습니다.
+> info **힌트** `SwaggerModule.createDocument()` 팩토리 메서드는 특히 요청 시 Swagger 문서를 생성하는 데 사용됩니다. 이 접근 방식은 초기화 시간을 절약하는 데 도움이 되며, 결과 문서는 [OpenAPI 문서](https://swagger.io/specification/#openapi-document) 명세를 따르는 직렬화 가능한 객체입니다. HTTP를 통해 문서를 제공하는 대신 JSON 또는 YAML 파일로 저장하고 다양한 방식으로 사용할 수도 있습니다.
 
 `DocumentBuilder`는 OpenAPI 명세를 따르는 기본 문서를 구성하는 데 도움이 됩니다. 이는 제목, 설명, 버전 등의 속성을 설정할 수 있는 여러 메서드를 제공합니다. 모든 HTTP 경로가 정의된 전체 문서를 생성하려면 `SwaggerModule` 클래스의 `createDocument()` 메서드를 사용합니다. 이 메서드는 두 가지 인수를 받는데, 애플리케이션 인스턴스와 Swagger 옵션 객체입니다. 선택적으로 세 번째 인수를 제공할 수 있으며, 이는 `SwaggerDocumentOptions` 타입이어야 합니다. 이에 대한 자세한 내용은 [문서 옵션 섹션](/openapi/introduction#document-options)에서 확인할 수 있습니다.
 
@@ -282,19 +282,20 @@ export interface SwaggerCustomOptions {
   urls?: Record<'url' | 'name', string>[];
 }
 ```
+
 > info **힌트** `ui`와 `raw`는 독립적인 옵션입니다. Swagger UI 비활성화(`ui: false`)는 API 정의(JSON/YAML)를 비활성화하지 않습니다. 반대로, API 정의 비활성화(`raw: []`)는 Swagger UI를 비활성화하지 않습니다.
 >
 > 예를 들어, 다음 구성은 Swagger UI를 비활성화하지만 API 정의에는 계속 액세스할 수 있도록 합니다:
+>
 > ```typescript
->const options: SwaggerCustomOptions = {
->    ui: false, // Swagger UI 비활성화
->    raw: ['json'], // JSON API 정의는 계속 액세스 가능 (YAML 비활성화)
->};
->SwaggerModule.setup('api', app, options);
+> const options: SwaggerCustomOptions = {
+>   ui: false, // Swagger UI 비활성화
+>   raw: ['json'], // JSON API 정의는 계속 액세스 가능 (YAML 비활성화)
+> };
+> SwaggerModule.setup('api', app, options);
 > ```
 >
 > 이 경우 http://localhost:3000/api-json은 계속 액세스 가능하지만, http://localhost:3000/api (Swagger UI)는 액세스할 수 없습니다.
-
 
 #### 예제
 

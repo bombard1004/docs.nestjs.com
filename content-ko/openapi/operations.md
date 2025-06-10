@@ -138,7 +138,7 @@ const config = new DocumentBuilder()
   description: 'List of cats',
   type: FileUploadDto,
 })
-uploadFile(@UploadedFile() file) {}
+uploadFile(@UploadedFile() file: Express.Multer.File) {}
 ```
 
 여기서 `FileUploadDto`는 다음과 같이 정의됩니다.

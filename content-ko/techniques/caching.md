@@ -322,7 +322,7 @@ CacheModule.registerAsync({
 
 이는 `useClass`와 동일하게 작동하지만 한 가지 중요한 차이점이 있습니다 - `CacheModule`은 자체 `ConfigService` 인스턴스를 생성하는 대신, 임포트된 모듈을 찾아 이미 생성된 `ConfigService`를 재사용합니다.
 
-> info **힌트** `CacheModule#register` 및 `CacheModule#registerAsync`, `CacheOptionsFactory`는 스토어별 구성 옵션을 좁혀 타입 안전성을 높이는 선택적 제네릭(타입 인자)을 가집니다.
+> info **힌트** `CacheModule#register`, `CacheModule#registerAsync` 및 `CacheOptionsFactory`는 스토어별 구성 옵션을 좁혀 타입 안전성을 높이는 선택적 제네릭(타입 인자)을 가집니다.
 
 또한 `registerAsync()` 메소드에 `extraProviders`라고 불리는 것을 전달할 수 있습니다. 이 프로바이더들은 모듈 프로바이더들과 병합됩니다.
 

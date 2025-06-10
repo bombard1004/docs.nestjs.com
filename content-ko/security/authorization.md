@@ -234,14 +234,12 @@ $ nest g class casl/casl-ability.factory
 ```typescript
 type Subjects = InferSubjects<typeof Article | typeof User> | 'all';
 
-export type AppAbility = Ability<[Action, Subjects]>;
+export type AppAbility = MongoAbility<[Action, Subjects]>;
 
 @Injectable()
 export class CaslAbilityFactory {
   createForUser(user: User) {
-    const { can, cannot, build } = new AbilityBuilder<
-      Ability<[Action, Subjects]>
-    >(Ability as AbilityClass<AppAbility>);
+    const { can, cannot, build } = new AbilityBuilder(createMongoAbility);
 
     if (user.isAdmin) {
       can(Action.Manage, 'all'); // 모든 것에 대한 읽기-쓰기 접근 권한
@@ -263,11 +261,13 @@ export class CaslAbilityFactory {
 
 > warning **주의** `all`은 CASL의 특별한 키워드이며 "모든 주체"를 나타냅니다.
 
-> info **힌트** `Ability`, `AbilityBuilder`, `AbilityClass`, 그리고 `ExtractSubjectType` 클래스는 `@casl/ability` 패키지에서 익스포트됩니다.
+> info **힌트** CASL v6부터는 `MongoAbility`가 레거시 `Ability`를 대체하여 기본 능력 클래스로 사용됩니다. 이는 MongoDB와 유사한 구문을 사용하여 조건 기반 권한을 더 잘 지원하기 위함입니다. 이름과는 달리, MongoAbility는 MongoDB에 종속되지 않습니다. MongoDB와 유사한 구문으로 작성된 조건에 대해 객체를 비교하는 방식으로 모든 종류의 데이터에서 작동합니다.
+
+> info **힌트** `MongoAbility`, `AbilityBuilder`, `AbilityClass`, 그리고 `ExtractSubjectType` 클래스는 `@casl/ability` 패키지에서 익스포트됩니다.
 
 > info **힌트** `detectSubjectType` 옵션은 CASL이 객체에서 주체 유형을 가져오는 방법을 이해하게 합니다. 자세한 정보는 [CASL 문서](https://casl.js.org/v6/en/guide/subject-type-detection#use-classes-as-subject-types)를 참조하세요.
 
-위 예제에서는 `AbilityBuilder` 클래스를 사용하여 `Ability` 인스턴스를 생성했습니다. 예상하셨겠지만, `can`과 `cannot`은 동일한 인자를 받지만 의미가 다릅니다. `can`은 지정된 주체에 대한 작업을 허용하고, `cannot`은 금지합니다. 둘 다 최대 4개의 인자를 받을 수 있습니다. 이러한 함수에 대해 더 자세히 알아보려면 공식 [CASL 문서](https://casl.js.org/v6/en/guide/intro)를 방문하세요.
+위 예제에서는 `AbilityBuilder` 클래스를 사용하여 `MongoAbility` 인스턴스를 생성했습니다. 예상하셨겠지만, `can`과 `cannot`은 동일한 인자를 받지만 의미가 다릅니다. `can`은 지정된 주체에 대한 작업을 허용하고, `cannot`은 금지합니다. 둘 다 최대 4개의 인자를 받을 수 있습니다. 이러한 함수에 대해 더 자세히 알아보려면 공식 [CASL 문서](https://casl.js.org/v6/en/guide/intro)를 방문하세요.
 
 마지막으로, `CaslModule` 모듈 정의의 `providers` 및 `exports` 배열에 `CaslAbilityFactory`를 추가했는지 확인하세요:
 
@@ -297,7 +297,7 @@ if (ability.can(Action.Read, 'all')) {
 }
 ```
 
-> info **힌트** `Ability` 클래스에 대해 더 자세히 알아보려면 공식 [CASL 문서](https://casl.js.org/v6/en/guide/intro)를 참조하세요.
+> info **힌트** `MongoAbility` 클래스에 대해 더 자세히 알아보려면 공식 [CASL 문서](https://casl.js.org/v6/en/guide/intro)를 참조하세요.
 
 예를 들어, 관리자가 아닌 사용자가 있다고 가정해 봅시다. 이 경우 사용자는 아티클을 읽을 수 있어야 하지만, 새로운 아티클을 생성하거나 기존 아티클을 삭제하는 것은 금지되어야 합니다.
 
@@ -311,7 +311,7 @@ ability.can(Action.Delete, Article); // false
 ability.can(Action.Create, Article); // false
 ```
 
-> info **힌트** `Ability`와 `AbilityBuilder` 클래스 모두 `can`과 `cannot` 메서드를 제공하지만, 용도가 다르며 약간 다른 인자를 받습니다.
+> info **힌트** `MongoAbility`와 `AbilityBuilder` 클래스 모두 `can`과 `cannot` 메서드를 제공하지만, 용도가 다르며 약간 다른 인자를 받습니다.
 
 또한, 요구 사항에서 지정했듯이 사용자는 자신의 아티클을 업데이트할 수 있어야 합니다:
 
@@ -329,7 +329,7 @@ article.authorId = 2;
 ability.can(Action.Update, article); // false
 ```
 
-보시다시피, `Ability` 인스턴스를 사용하면 권한을 매우 읽기 쉬운 방식으로 확인할 수 있습니다. 마찬가지로, `AbilityBuilder`를 사용하면 유사한 방식으로 권한을 정의하고 다양한 조건을 지정할 수 있습니다. 더 많은 예제를 찾으려면 공식 문서를 방문하세요.
+보시다시피, `MongoAbility` 인스턴스를 사용하면 권한을 매우 읽기 쉬운 방식으로 확인할 수 있습니다. 마찬가지로, `AbilityBuilder`를 사용하면 유사한 방식으로 권한을 정의하고 다양한 조건을 지정할 수 있습니다. 더 많은 예제를 찾으려면 공식 문서를 방문하세요.
 
 #### 고급: `PoliciesGuard` 구현
 

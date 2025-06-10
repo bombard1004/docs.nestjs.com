@@ -938,7 +938,7 @@ export class UsersService {
 
 > warning **주의** 루트 `AppModule`에 `UsersModule`을 가져오는 것을 잊지 마세요.
 
-`SequelizeModule.forFeature`를 가져온 모듈 외부에서 리포지토리를 사용하려면 해당 모듈이 생성한 프로바이더를 다시 내보내야 합니다.
+`SequelizeModule.forFeature`를 가져온 모듈 외부에서 모델을 사용하려면 해당 모듈이 생성한 프로바이더를 다시 내보내야 합니다.
 다음과 같이 전체 모듈을 내보내면 됩니다.
 
 ```typescript

@@ -112,7 +112,7 @@ findAll() {
 다음은 Express 어댑터에 대해 `trust proxy`를 활성화하는 방법을 보여주는 예시입니다.
 
 ```typescript
-@@filename(main.ts)
+@@filename(main)
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -238,7 +238,7 @@ export class GqlThrottlerGuard extends ThrottlerGuard {
 <table>
   <tr>
     <td><code>name</code></td>
-    <td>사용 중인 요청 제한 세트를 내부적으로 추적하기 위한 이름입니다. 전달되지 않으면 기본값은 `default`입니다.</td>
+    <td>사용 중인 요청 제한 세트를 내부적으로 추적하기 위한 이름입니다. 전달되지 않으면 기본값은 <code>default</code>입니다.</td>
   </tr>
   <tr>
     <td><code>ttl</code></td>
@@ -353,7 +353,7 @@ export class AppModule {}
 
 사용자 정의 저장소를 사용하는 경우, `ttl` 및 `limit`를 배열로 감싸고 옵션 객체의 `throttlers` 속성에 할당해야 합니다.
 
-이제 `@ThrottleSkip()`는 `string: boolean` 속성을 가진 객체를 인수로 받아야 합니다. 문자열은 요청 제한기의 이름입니다. 이름이 없는 경우, 그렇지 않으면 내부적으로 사용될 문자열 `'default'`를 전달하십시오.
+`@SkipThrottle()` 데코레이터는 특정 라우트 또는 메서드의 스로틀링을 우회하는 데 사용할 수 있습니다. 이 데코레이터는 선택적 불리언 매개변수를 받으며, 기본값은 `true`입니다. 이는 특정 엔드포인트에서 속도 제한을 건너뛰고 싶을 때 유용합니다.
 
 모든 `@Throttle()` 데코레이터도 이제 요청 제한 컨텍스트의 이름과 관련된 문자열 키(이름이 없으면 다시 `'default'`)와 `limit` 및 `ttl` 키를 가진 객체 값을 가진 객체를 인수로 받아야 합니다.
 

@@ -343,6 +343,44 @@ export class ConfigModule extends ConfigurableModuleClass {}
 export class AppModule {}
 ```
 
+The `registerAsync` method takes the following object as an argument:
+
+```typescript
+{
+  /**
+   * 프로바이더로 인스턴스화될 클래스를 확인하는 주입 토큰.
+   * 이 클래스는 해당 인터페이스를 구현해야 합니다.
+   */
+  useClass?: Type<
+    ConfigurableModuleOptionsFactory<ModuleOptions, FactoryClassMethodKey>
+  >;
+  /**
+   * 모듈을 구성하기 위한 옵션(또는 옵션으로 확인되는 Promise)을 반환하는 함수.
+   */
+  useFactory?: (...args: any[]) => Promise<ModuleOptions> | ModuleOptions;
+  /**
+   * 팩토리가 주입할 수 있는 의존성.
+   */
+  inject?: FactoryProvider['inject'];
+  /**
+   * 기존 프로바이더를 확인하는 주입 토큰. 해당 프로바이더는
+   * 해당 인터페이스를 구현해야 합니다.
+   */
+  useExisting?: Type<
+    ConfigurableModuleOptionsFactory<ModuleOptions, FactoryClassMethodKey>
+  >;
+}
+```
+
+위 속성들을 하나씩 살펴보겠습니다.
+
+- `useFactory` - 구성 객체를 반환하는 함수입니다. 동기 또는 비동기일 수 있습니다. 팩토리 함수에 의존성을 주입하려면 `inject` 속성을 사용합니다. 위 예제에서는 이 방식을 사용했습니다.
+- `inject` - 팩토리 함수에 주입될 의존성 배열입니다. 의존성의 순서는 팩토리 함수의 매개변수 순서와 일치해야 합니다.
+- `useClass` - 프로바이더로 인스턴스화될 클래스입니다. 이 클래스는 해당 인터페이스를 구현해야 합니다. 일반적으로 이는 구성 객체를 반환하는 `create()` 메서드를 제공하는 클래스입니다. 자세한 내용은 아래 [사용자 지정 메서드 키](/fundamentals/dynamic-modules#사용자-지정-메서드-키) 섹션을 참조하십시오.
+- `useExisting` - Nest가 클래스의 새 인스턴스를 생성하도록 지시하는 대신 기존 프로바이더를 사용할 수 있게 하는 `useClass`의 변형입니다. 이는 모듈에 이미 등록된 프로바이더를 사용하려는 경우에 유용합니다. 이 클래스는 `useClass`에서 사용된 것과 동일한 인터페이스를 구현해야 합니다 (따라서 기본 메서드 이름을 재정의하지 않는 한 `create()` 메서드를 제공해야 합니다. 아래 사용자 지정 메서드 키 섹션 참조).
+
+위 옵션(`useFactory`, `useClass`, 또는 `useExisting`) 중 하나를 항상 선택해야 합니다. 이들은 상호 배타적입니다.
+
 마지막으로, `ConfigService` 클래스를 업데이트하여 지금까지 사용한 `'CONFIG_OPTIONS'` 대신 생성된 모듈 옵션 프로바이더를 주입하도록 합시다.
 
 ```typescript
@@ -431,17 +469,18 @@ export class AppModule {}
 이러한 경우 `ConfigurableModuleBuilder#setExtras` 메서드를 사용할 수 있습니다. 다음 예제를 참조하십시오.
 
 ```typescript
-export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } = new ConfigurableModuleBuilder<ConfigModuleOptions>()
-  .setExtras(
-    {
-      isGlobal: true,
-    },
-    (definition, extras) => ({
-      ...definition,
-      global: extras.isGlobal,
-    }),
-  )
-  .build();
+export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
+  new ConfigurableModuleBuilder<ConfigModuleOptions>()
+    .setExtras(
+      {
+        isGlobal: true,
+      },
+      (definition, extras) => ({
+        ...definition,
+        global: extras.isGlobal,
+      }),
+    )
+    .build();
 ```
 
 위 예제에서 `setExtras` 메서드에 전달된 첫 번째 인수는 "추가" 속성에 대한 기본값을 포함하는 객체입니다. 두 번째 인수는 자동 생성된 모듈 정의(`provider`, `exports` 등 포함)와 "추가" 속성(소비자가 지정했거나 기본값)을 나타내는 `extras` 객체를 받는 함수입니다. 이 함수의 반환 값은 수정된 모듈 정의입니다. 이 특정 예제에서는 `extras.isGlobal` 속성을 모듈 정의의 `global` 속성에 할당하고 있습니다 (이는 차례로 모듈이 전역인지 여부를 결정합니다. 자세한 내용은 [여기](/modules#dynamic-modules)를 참조하십시오).
@@ -465,7 +504,9 @@ export class AppModule {}
 ```typescript
 @Injectable()
 export class ConfigService {
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) private options: ConfigModuleOptions) {
+  constructor(
+    @Inject(MODULE_OPTIONS_TOKEN) private options: ConfigModuleOptions,
+  ) {
     // "options" 객체는 "isGlobal" 속성을 가지지 않습니다.
     // ...
   }
@@ -479,7 +520,11 @@ export class ConfigService {
 ```typescript
 import { Module } from '@nestjs/common';
 import { ConfigService } from './config.service';
-import { ConfigurableModuleClass, ASYNC_OPTIONS_TYPE, OPTIONS_TYPE } from './config.module-definition';
+import {
+  ConfigurableModuleClass,
+  ASYNC_OPTIONS_TYPE,
+  OPTIONS_TYPE,
+} from './config.module-definition';
 
 @Module({
   providers: [ConfigService],
@@ -505,5 +550,10 @@ export class ConfigModule extends ConfigurableModuleClass {
 `OPTIONS_TYPE` 및 `ASYNC_OPTIONS_TYPE` 유형은 모듈 정의 파일에서 내보내야 한다는 점에 유의하십시오.
 
 ```typescript
-export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN, OPTIONS_TYPE, ASYNC_OPTIONS_TYPE } = new ConfigurableModuleBuilder<ConfigModuleOptions>().build();
+export const {
+  ConfigurableModuleClass,
+  MODULE_OPTIONS_TOKEN,
+  OPTIONS_TYPE,
+  ASYNC_OPTIONS_TYPE,
+} = new ConfigurableModuleBuilder<ConfigModuleOptions>().build();
 ```

@@ -32,8 +32,7 @@ import { SqliteDriver } from '@mikro-orm/sqlite';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 `forRoot()` 메서드는 MikroORM 패키지의 `init()`과 동일한 구성 객체를 받습니다. 전체 구성 문서는 [이 페이지](https://mikro-orm.io/docs/configuration)를 확인하세요.
@@ -67,7 +66,7 @@ export class AppModule {}
 이후에는 `EntityManager`를 전체 프로젝트에 걸쳐 주입할 수 있게 됩니다(다른 곳에서 어떤 모듈도 가져올 필요 없이).
 
 ```ts
-// 사용 중인 드라이버 패키지 또는 `@mikro-orm/knex`에서 모든 것을 가져옵니다.
+// 사용 중인 드라이버 패키지 또는 `@mikro-orm/knex`에서 모든 것을 임포트합니다.
 import { EntityManager, MikroORM } from '@mikro-orm/sqlite';
 
 @Injectable()
