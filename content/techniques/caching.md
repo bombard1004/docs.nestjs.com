@@ -54,7 +54,7 @@ await this.cacheManager.set('key', 'value');
 
 > warning **Note** The in-memory cache storage can only store values of types that are supported by [the structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#javascript_types).
 
-You can manually specify a TTL (expiration time in miliseconds) for this specific key, as follows:
+You can manually specify a TTL (expiration time in milliseconds) for this specific key, as follows:
 
 ```typescript
 await this.cacheManager.set('key', 'value', 1000);
@@ -322,7 +322,7 @@ CacheModule.registerAsync({
 
 This works the same as `useClass` with one critical difference - `CacheModule` will lookup imported modules to reuse any already-created `ConfigService`, instead of instantiating its own.
 
-> info **Hint** `CacheModule#register` and `CacheModule#registerAsync` and `CacheOptionsFactory` has an optional generic (type argument) to narrow down store-specific configuration options, making it type safe.
+> info **Hint** `CacheModule#register`, `CacheModule#registerAsync` and `CacheOptionsFactory` have an optional generic (type argument) to narrow down store-specific configuration options, making it type safe.
 
 You can also pass so-called `extraProviders` to the `registerAsync()` method. These providers will be merged with the module providers.
 
